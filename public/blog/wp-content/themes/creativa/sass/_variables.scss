@@ -1,0 +1,117 @@
+
+
+// BASIC VARIABLES
+$font-family: 'Poppins', Arial, sans-serif;
+$header-font-family: 'Montserrat', Arial, sans-serif;
+$secondary-font-family: 'Rosarivo', Georgia, Arial, serif;
+$font-size: 14px;
+$line-height: 26px;
+$font-weight: 300;
+
+$font-a-weight: 400;
+
+$margin-bottom: 55px;
+
+$container-width: 1300px;
+
+//COLORS
+$color: #8a8a8a;
+$color-dark: #111;
+// $accent-color: #F45615;
+// $accent-color: #23bda9;
+// $accent-color: #0d66c5;
+// $accent-color: #2ba1f5;
+// $accent-color: #03a9f4;
+// $accent-color: #38da8b;
+// $accent-color: #00b2e2;
+// $accent-color: #febd03;
+// $accent-color: #fdbb50;
+// $accent-color: #77dbaa;
+// $accent-color: #a5d80d
+$accent-color: #21ce99;
+$content-bg: #fff;
+$grey-bg: #fafafa;
+
+
+$a-color: #111;
+$a-hover-color: #111;
+
+//NAVBAR
+$navbar-height: 100px;
+$header-height: 150px;
+$bar-height: 100px;
+$bar-gap: 30px;
+
+// Sticky header height
+$sticky-header-height: 80px;
+
+$nav-search-color: #acacac;
+
+$nav-a-color: #3e3e3e;
+$nav-a-hover: #919191;
+$nav-active-color: #fff;
+$nav-active-bg: #111;
+$nav-a-sub-color: #fff;
+$nav-font-family: 'Montserrat', Arial, sans-serif;
+
+$top-bar-height: 50px;
+$padding-icons: 15px;
+
+// Title bar
+$title-margin-top: 100px;
+$title-margin-bottom: 100px;
+$page-title-bgcolor: #fafafa;
+$page-title-color: #111;
+
+$single-cover-height: 300px;
+
+// Side navigation width
+$side-navigation-width: 290px;
+$side-navigation-bg: #fff;
+
+// Content padding 
+$content-padding-top: 100px;
+$content-padding-bottom: 100px;
+
+// Portfolio items GAP
+$portfolio-items-gap: 30px;
+$portfolio-overlay-color: rgba(0,0,0,0.2);
+
+$sidebar-padding: 45px;
+
+$icon-shadow-height: 80px;
+
+// Slick slider
+$arrow-size: 60px;
+$arrow-size-large: 80px;
+
+$seconary-nav-sidebar-width: 330px;
+
+//Widgets 
+$widget-heading-color: #111;
+
+//Footer 
+$footer-widget-background: #252525;
+$widget-footer-heading-color: #696969;
+$footer-widget-text-color: #a0a0a0;
+$footer-widget-text-a: #a0a0a0;
+
+$footer-copyrights-background: #1c1c1c;
+$footer-copyrights-text-color: #999999;
+$footer-copyrights-font-size: 12px;
+
+
+// Layout vars 
+$layout-boxed-width: $container-width + 120;
+
+$layout-bordered-border-size: 20px;
+$layout-bordered-width: $container-width + 60 + $layout-bordered-border-size;
+
+
+
+
+
+
+//alternatives
+// $accent-color: #9ed140;
+// $portfolio-overlay-color: rgba(249, 110, 91, 0.9);

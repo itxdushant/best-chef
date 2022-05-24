@@ -1,0 +1,48 @@
+.color-accent {
+	color: #21ce99;
+}
+
+.highlight-accent {
+	background: #21ce99;
+	margin: 0;
+	padding: 5px;
+	color: #fff;
+	display: inline-block;
+}
+
+.highlight-default {
+	background: #fcf8e5;
+	margin: 0;
+	padding: 5px;
+	color: inherit;
+	display: inline-block;
+}
+
+.highlight-dark {
+	background: #000;
+	margin: 0;
+	padding: 5px;
+	color: #fff;
+	display: inline-block;
+}
+.highlight-light {
+	background: #fff
+	margin: 0;
+	padding: 5px;
+	color: #111111;
+	display: inline-block;
+}
+.highlight-grey {
+	background: grey;
+	margin: 0;
+	padding: 5px;
+	color: #fff;
+	display: inline-block;
+}
+
+small {
+	font: 12px 'Open Sans';
+	letter-spacing: 1px;
+	text-transform: uppercase;
+	font-weight: bold;
+}

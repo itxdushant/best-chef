@@ -1,0 +1,242 @@
+/* ==========================================================================
+   Author's custom styles
+   ========================================================================== */
+
+
+   #top-bar .top-bar__content--right {
+    display: none;
+}
+#top-bar .top-bar__content--left {
+    width: 100%;
+    text-align: center;
+    padding: 0px 15px !important;
+}
+div#top-bar {
+    background-color: #d3ab55;
+    text-align: center;
+    padding: 5px 0px;
+    height: auto;
+}
+div#top-bar p {
+    color: #fff;
+    font-size: 16px;
+    line-height: 28px;
+    font-weight: 600;
+}
+body .container {
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+div#navbar {
+    background-color: transparent;
+    position: absolute;
+    left: 0;
+    right: 0;
+    width: 100%;
+}
+div#navbar .theme-logo {
+    padding-left: 0px;
+}
+div#navbar .theme-logo img.logo-img {
+    max-width: 94px;
+    height: auto;
+}
+div#navbar .navbar-inner {
+    border-bottom: 1px solid rgba(225, 225, 225, 0.5);
+}
+body .navbar-inner ul li a span {
+    color: #fff;
+    font-size: 16px;
+    font-weight: 600 !important;
+    text-transform: uppercase;
+}
+body .navbar-inner ul.menu li.header-login-btn {
+    padding: 10px 10px;
+    color: #000;
+    border: 1px solid #fff;
+    font-family: Oswald Light;
+    text-transform: uppercase;
+    width: 130px;
+    text-align: center;
+    display: inline-block;
+    margin: 0px 0px 0px 20px;
+    border-radius: 4px;
+    height: auto;
+}
+body .navbar-inner ul.menu {
+    display: flex;
+    align-items: center;
+}
+body .navbar-inner ul.menu li.header-join-btn {
+    padding: 10px 10px;
+    color: #000;
+    border: 1px solid #fff;
+    font-family: Oswald Light;
+    text-transform: uppercase;
+    width: 130px;
+    text-align: center;
+    display: inline-block;
+    margin: 0px 0px 0px 10px;
+    border-radius: 4px;
+    height: auto;
+    background-color: #fff;
+}
+body .navbar-inner ul.menu li.header-join-btn a span {
+    color: #000;
+}
+body .navbar-inner ul.menu li.header-chef-btn {
+    padding: 10px 10px;
+    color: #000;
+    border: 1px solid #fff;
+    font-family: Oswald Light;
+    text-transform: uppercase;
+    width: 135px;
+    text-align: center;
+    display: inline-block;
+    margin: 0px 0px 0px 10px;
+    border-radius: 4px;
+    height: auto;
+    background: #d3ab55;
+    text-decoration: none;
+    color: #fff;
+    border: 1px solid #d3ab55;
+}
+body .navbar-inner ul.menu li.header-login-btn:hover {
+    background-color: #d3ab54;
+    border-color: #d3ab54;
+}
+body .navbar-inner ul.menu li.header-join-btn:hover {
+    background-color: #d3ab54;
+    border-color: #d3ab54;
+}
+body .navbar-inner ul.menu li.header-join-btn:hover span {
+    color: #fff;
+}
+body .navbar-inner ul.menu li.header-chef-btn:hover {
+    background-color: #fff;
+}
+body .navbar-inner ul.menu li.header-chef-btn:hover span {
+    color: #000;
+}
+section#footer-widget-area {
+    padding: 60px 0px 0px;
+}
+section#footer-widget-area .widget_media_image img {
+    width: 100%;
+    height: 100%;
+    max-width: 170px !important;
+}
+ul#menu-footer-menu {
+    display: flex;
+    flex-direction: revert;
+    justify-content: center;
+	    flex-wrap: wrap;
+}
+ul#menu-footer-menu li a {
+    color: #fff;
+    font-family: Oswald;
+    font-size: 16px;
+    letter-spacing: 1px;
+    font-weight: 700;
+}
+ul#menu-footer-menu li {
+    margin: 0px 5px;
+}
+div#copyrights {
+    text-align: center;
+}
+.widget_social_icons h6.widgettitle {
+    display: none;
+}
+section#footer-widget-area .widget_nav_menu {
+    margin: 40px 0px 20px;
+}
+div#copyrights p {
+    color: #fff;
+    font-size: 14px;
+    line-height: 28px;
+    font-weight: 600;
+}
+section#footer-widget-area .widget_social_icons {
+    margin-top: 45px;
+}
+section#footer-widget-area .widget_social_icons .social-icons a {
+    background-color: transparent;
+    font-size: 35px;
+    color: #d9ac3b !important;
+}
+div#sticky-header .logo-sticky {
+    padding-left: 0px !important;
+}
+div#sticky-header .logo-sticky img.logo-img {
+    height: auto !important;
+    width: 100% !important;
+    max-height: initial !important;
+    max-width: 94px;
+}
+div#sticky-header {
+    height: 100px !important;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

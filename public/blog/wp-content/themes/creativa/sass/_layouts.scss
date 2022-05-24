@@ -1,0 +1,270 @@
+$background-color: #282828;
+
+.nav-layout-side {
+	.nav-side {
+		position: fixed;
+		top: 0;
+		width: $side-navigation-width;
+		min-height: 100%;
+		background: $side-navigation-bg;
+		overflow: hidden;
+
+		&__mobile-menu {
+			visibility: hidden;
+			z-index: 2;
+			@include transform-origin(0);
+			position: absolute;
+			left: 50%;
+			top: 50px;
+
+			font-weight: 700;
+			font-size: 13px;
+			letter-spacing: 1px;
+			text-transform: uppercase;
+
+			i {
+				margin-right: 3px;
+			    font-size: 16px;
+			    top: 2px;
+			    position: relative;
+			}
+		}
+
+		&__overlay {
+			position: absolute;
+			width: 100%;
+			height: 100%;
+			top: 0;
+			left: 0;
+			background: rgba(0,0,0,0.2);
+		}
+
+		&__wrapper {
+		    position: absolute;
+		    z-index: 2;
+		    min-height: 100%;
+		    width: 100%;
+		}
+
+		&__bottom--wrap {
+			position: relative;
+			width: 100%;
+			margin-top: 70px;
+
+			.nav-search {
+				margin-top: 20px;
+			}
+
+			input,
+			.input-group-addon {
+				background: transparent;
+			}
+		}
+
+		&__nav,
+		.sidebar-nav {
+	   		position: relative;
+		}
+
+	}
+
+	#lang_sel_footer {
+		text-align: center;
+	}
+
+
+	&.nav-layout-side--left {
+		.side-nav--content-wrapper {
+			margin-left: $side-navigation-width;
+		}
+
+		.nav-side {
+			left: 0;
+			@include box-shadow(1px 0 0 rgba(0,0,0,.05));
+
+			&__mobile-menu {
+				@include transform(rotate(-90deg) translateX(-50%));
+			}
+		}
+	}
+	&.nav-layout-side--right {
+		.side-nav--content-wrapper {
+			margin-right: $side-navigation-width;
+		}
+
+		.nav-side {
+			right: 0;
+			@include box-shadow(-1px 0 0 rgba(0,0,0,.05));
+
+			&__mobile-menu {
+				@include transform(rotate(90deg) translateX(-50%));
+			}
+		}
+	}
+
+	&.nav-layout-side--top-bar {
+		.side-nav--content-wrapper {
+			padding-top: $top-bar-height;
+		}
+
+		.nav-side {
+			margin-top: $top-bar-height;
+
+			.nav-side__bottom--wrap {
+				bottom: $top-bar-height;
+			}
+
+			.nav-side__mobile-menu {
+				top: $top-bar-height;
+			}
+		}
+
+		// .nav-side__overlay {
+		// 	top: $top-bar-height;
+		// }
+
+
+		#top-bar {
+			position: fixed;
+			z-index: 2;
+		}
+	}
+}
+
+@media (max-width: ($container-width + $side-navigation-width) + 30) {
+	.side-nav--content-wrapper {
+		.container {
+		  width: 100%;
+		  padding-left: 45px;
+		  padding-right: 45px;
+		}
+
+	}
+}
+
+@media (max-width: 1365px) {
+	.nav-layout-side {
+		.nav-side {
+			width: 50px;
+
+			&.closed {
+				@include transition(width 0.4s);
+			}
+
+			.nav-side__wrapper {
+			 	opacity: 0;
+			 	visibility: hidden;
+				@include transition(opacity 0.2s);
+			}
+
+			.nav-side__mobile-menu {
+				visibility: visible;
+				@include transition(visibility 0.4s);
+			}
+
+
+			&__bottom--wrap {
+				position: relative;
+				bottom: 0 !important;
+			}
+
+			.ps-scrollbar-x-rail {
+				display: none !important;
+			}
+		}
+
+		.nav-side {
+			&.open {
+				width: $side-navigation-width;
+				@include transition(width 0.4s);
+
+				.nav-side__wrapper {
+				 	opacity: 1;
+				 	visibility: visible;
+					@include transition(opacity 0.4s 0.2s);
+				}
+
+				.nav-side__mobile-menu {
+					visibility: hidden;
+					// top: -500px;
+					@include transition(visibility 0.1s);
+				}
+
+				.sidebar-nav {
+					display: block;
+				}
+			}
+		}
+
+		&.nav-layout-side--left {
+			.side-nav--content-wrapper,
+			.side-nav--content-wrapper.closed {
+				margin-left: 50px;
+			}
+
+			@include rtl {
+				.back-to-top {
+					left: 80px;
+					right: auto;
+				}
+			}
+		}
+		&.nav-layout-side--right {
+			.side-nav--content-wrapper,
+			.side-nav--content-wrapper.closed {
+				margin-right: 50px;
+			}
+
+			.back-to-top {
+				right: 80px;
+			}
+		}
+
+	}
+}
+
+
+.layout-wrapper {
+	position: relative;
+}
+
+.layout-boxed {
+	background-color: $background-color;
+	@media (min-width: $layout-boxed-width + 20) {
+
+		.layout-wrapper {
+			margin: 0 auto;
+			width: $layout-boxed-width;
+			// background: #fff;
+			overflow: hidden;
+
+			#navbar {
+				width: $layout-boxed-width;
+			}
+		}
+	}	
+
+	@media (max-width: $layout-boxed-width + $side-navigation-width) {
+
+		&.nav-layout-side {
+			.layout-wrapper {
+				width: 100%;
+			}
+		}
+	}
+}
+
+.layout-bordered {
+	background-color: $background-color;
+
+	@media (min-width: $layout-bordered-width) {
+
+		.layout-wrapper {
+			margin: 0 auto;
+			margin: $layout-bordered-border-size;
+			// background: #fff;
+			overflow: hidden;
+		}
+	}
+}
+

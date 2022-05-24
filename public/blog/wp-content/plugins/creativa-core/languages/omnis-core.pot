@@ -1,0 +1,516 @@
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: omnis theme\n"
+"POT-Creation-Date: 2020-04-08 14:42+0200\n"
+"PO-Revision-Date: 2016-09-30 16:20+0200\n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"Language: en_US\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Poedit 1.8.9\n"
+"X-Poedit-Basepath: ..\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"X-Poedit-SourceCharset: UTF-8\n"
+"X-Poedit-KeywordsList: __;_e;_x;_n;esc_html__;esc_html_e;esc_html_x;"
+"esc_attr__;esc_attr_e;esc_attr_x\n"
+"X-Poedit-SearchPath-0: .\n"
+"X-Poedit-SearchPathExcluded-0: js\n"
+"X-Poedit-SearchPathExcluded-1: node_modules\n"
+"X-Poedit-SearchPathExcluded-2: .sass-cache\n"
+
+#: includes/omnis-admin-menu.php:13 includes/omnis-admin-menu.php:14
+msgid "Omnis"
+msgstr ""
+
+#: includes/omnis-admin-menu.php:24 includes/omnis-admin-menu.php:25
+#: includes/omnis-post-types.php:6 includes/omnis-post-types.php:8
+#: includes/omnis-post-types.php:9 includes/omnis-post-types.php:13
+msgid "Templates"
+msgstr ""
+
+#: includes/omnis-admin-menu.php:33 includes/omnis-admin-menu.php:34
+#: includes/omnis-post-types.php:64 includes/omnis-post-types.php:66
+#: includes/omnis-post-types.php:67 includes/omnis-post-types.php:71
+msgid "Elements"
+msgstr ""
+
+#: includes/omnis-admin-menu.php:43
+msgid "Fonto"
+msgstr ""
+
+#: includes/omnis-admin-menu.php:44
+msgid "Font Manager"
+msgstr ""
+
+#: includes/omnis-menus-custom.php:5
+msgid "Omnis Items"
+msgstr ""
+
+#: includes/omnis-menus-custom.php:17 includes/omnis-shortcodes.php:51
+#: includes/omnis-shortcodes.php:577
+msgid "Search"
+msgstr ""
+
+#: includes/omnis-menus-custom.php:23
+msgid "Overlay Content Dots"
+msgstr ""
+
+#: includes/omnis-menus-custom.php:29
+msgid "Overlay Content"
+msgstr ""
+
+#: includes/omnis-menus-custom.php:35
+msgid "Title Item"
+msgstr ""
+
+#: includes/omnis-menus-custom.php:45
+msgid "Cart"
+msgstr ""
+
+#: includes/omnis-menus-custom.php:55
+msgid "Items"
+msgstr ""
+
+#: includes/omnis-menus-custom.php:104
+msgid "Mega Menu"
+msgstr ""
+
+#: includes/omnis-menus-custom.php:110
+msgid "Hide Label"
+msgstr ""
+
+#: includes/omnis-menus-custom.php:116
+msgid "Shortcodes (advanced)"
+msgstr ""
+
+#: includes/omnis-post-types.php:7 includes/omnis-post-types.php:35
+#: includes/omnis-post-types.php:93
+msgid "Template"
+msgstr ""
+
+#: includes/omnis-post-types.php:10
+msgid "Template Archives"
+msgstr ""
+
+#: includes/omnis-post-types.php:11
+msgid "Template Attributes"
+msgstr ""
+
+#: includes/omnis-post-types.php:12
+msgid "Parent Template:"
+msgstr ""
+
+#: includes/omnis-post-types.php:14 includes/omnis-post-types.php:15
+msgid "Add New Template"
+msgstr ""
+
+#: includes/omnis-post-types.php:16
+msgid "New Template"
+msgstr ""
+
+#: includes/omnis-post-types.php:17
+msgid "Edit Template"
+msgstr ""
+
+#: includes/omnis-post-types.php:18
+msgid "Update Template"
+msgstr ""
+
+#: includes/omnis-post-types.php:19
+msgid "View Template"
+msgstr ""
+
+#: includes/omnis-post-types.php:20
+msgid "View Templates"
+msgstr ""
+
+#: includes/omnis-post-types.php:21
+msgid "Search Template"
+msgstr ""
+
+#: includes/omnis-post-types.php:22 includes/omnis-post-types.php:80
+msgid "Not found"
+msgstr ""
+
+#: includes/omnis-post-types.php:23 includes/omnis-post-types.php:81
+msgid "Not found in Trash"
+msgstr ""
+
+#: includes/omnis-post-types.php:24 includes/omnis-post-types.php:82
+msgid "Featured Image"
+msgstr ""
+
+#: includes/omnis-post-types.php:25 includes/omnis-post-types.php:83
+msgid "Set featured image"
+msgstr ""
+
+#: includes/omnis-post-types.php:26 includes/omnis-post-types.php:84
+msgid "Remove featured image"
+msgstr ""
+
+#: includes/omnis-post-types.php:27 includes/omnis-post-types.php:85
+msgid "Use as featured image"
+msgstr ""
+
+#: includes/omnis-post-types.php:28 includes/omnis-post-types.php:86
+msgid "Insert into item"
+msgstr ""
+
+#: includes/omnis-post-types.php:29 includes/omnis-post-types.php:87
+msgid "Uploaded to this item"
+msgstr ""
+
+#: includes/omnis-post-types.php:30
+msgid "Templates list"
+msgstr ""
+
+#: includes/omnis-post-types.php:31
+msgid "Items templates navigation"
+msgstr ""
+
+#: includes/omnis-post-types.php:32
+msgid "Filter templates list"
+msgstr ""
+
+#: includes/omnis-post-types.php:36
+msgid "Custom Templates for posts, pages and projects."
+msgstr ""
+
+#: includes/omnis-post-types.php:65
+msgid "Element"
+msgstr ""
+
+#: includes/omnis-post-types.php:68
+msgid "Element Archives"
+msgstr ""
+
+#: includes/omnis-post-types.php:69
+msgid "Element Attributes"
+msgstr ""
+
+#: includes/omnis-post-types.php:70
+msgid "Parent Element:"
+msgstr ""
+
+#: includes/omnis-post-types.php:72 includes/omnis-post-types.php:73
+msgid "Add New Element"
+msgstr ""
+
+#: includes/omnis-post-types.php:74
+msgid "New Element"
+msgstr ""
+
+#: includes/omnis-post-types.php:75
+msgid "Edit Element"
+msgstr ""
+
+#: includes/omnis-post-types.php:76
+msgid "Update Element"
+msgstr ""
+
+#: includes/omnis-post-types.php:77 includes/omnis-post-types.php:78
+msgid "View Element"
+msgstr ""
+
+#: includes/omnis-post-types.php:79
+msgid "Search Elements"
+msgstr ""
+
+#: includes/omnis-post-types.php:88
+msgid "Elements list"
+msgstr ""
+
+#: includes/omnis-post-types.php:89
+msgid "Items element navigation"
+msgstr ""
+
+#: includes/omnis-post-types.php:90
+msgid "Filter elements list"
+msgstr ""
+
+#: includes/omnis-post-types.php:94
+msgid "Custom Elements for posts, pages and projects."
+msgstr ""
+
+#: includes/omnis-shortcodes.php:21 includes/omnis-shortcodes.php:31
+#, php-format
+msgid "Archive – %s"
+msgstr ""
+
+#: includes/omnis-shortcodes.php:34
+#, php-format
+msgid "Tag – %s"
+msgstr ""
+
+#: includes/omnis-shortcodes.php:38
+#, php-format
+msgid "Author – %s"
+msgstr ""
+
+#: includes/omnis-shortcodes.php:42
+msgid "Shop"
+msgstr ""
+
+#: includes/omnis-shortcodes.php:44 includes/omnis-shortcodes.php:46
+#, php-format
+msgid "Shop – %s"
+msgstr ""
+
+#: includes/omnis-shortcodes.php:105
+msgid "Read more"
+msgstr ""
+
+#: includes/omnis-shortcodes.php:307
+msgid "\\a\\t"
+msgstr ""
+
+#: includes/omnis-shortcodes.php:323
+msgid " ago"
+msgstr ""
+
+#: includes/omnis-shortcodes.php:499
+msgid "< 1 min"
+msgstr ""
+
+#: includes/omnis-shortcodes.php:501
+msgid "1 min"
+msgstr ""
+
+#: includes/omnis-shortcodes.php:503 includes/omnis-shortcodes.php:505
+msgid "min"
+msgstr ""
+
+#: includes/omnis-shortcodes.php:542
+msgid "Previous"
+msgstr ""
+
+#: includes/omnis-shortcodes.php:555
+msgid "Next"
+msgstr ""
+
+#: includes/omnis-shortcodes.php:574
+msgid "Home"
+msgstr ""
+
+#: includes/omnis-shortcodes.php:575
+msgid "Blog"
+msgstr ""
+
+#: includes/omnis-shortcodes.php:576
+msgid "Archive"
+msgstr ""
+
+#: includes/omnis-shortcodes.php:609
+msgid "$19.00"
+msgstr ""
+
+#: includes/omnis-shortcodes.php:677
+msgid "Facebook"
+msgstr ""
+
+#: includes/omnis-shortcodes.php:681
+msgid "Twitter"
+msgstr ""
+
+#: includes/omnis-shortcodes.php:685
+msgid "Pinterest"
+msgstr ""
+
+#: includes/omnis-shortcodes.php:689
+msgid "Reddit"
+msgstr ""
+
+#: includes/omnis-shortcodes.php:693
+msgid "Copy URL To Clipboard"
+msgstr ""
+
+#: includes/omnis-shortcodes.php:697
+msgid "Email"
+msgstr ""
+
+#: includes/omnis-shortcodes.php:738
+msgid "Share"
+msgstr ""
+
+#: includes/redux/omnis-extensions/metaboxes/enqueue.php:456
+msgid "You have changes that are not saved. Would you like to save them now?"
+msgstr ""
+
+#: includes/redux/omnis-extensions/metaboxes/enqueue.php:464
+msgid "Are you sure? Resetting will lose all custom values."
+msgstr ""
+
+#: includes/redux/omnis-extensions/metaboxes/enqueue.php:472
+msgid "Are you sure? Resetting will lose all custom values in this section."
+msgstr ""
+
+#: includes/redux/omnis-extensions/metaboxes/enqueue.php:480
+msgid ""
+"Your current options will be replaced with the values of this preset. Would "
+"you like to proceed?"
+msgstr ""
+
+#: includes/redux/omnis-extensions/metaboxes/enqueue.php:488
+msgid ""
+"Your current options will be replaced with the values of this import. Would "
+"you like to proceed?"
+msgstr ""
+
+#: includes/redux/omnis-extensions/metaboxes/enqueue.php:497
+msgid "Please Wait"
+msgstr ""
+
+#: includes/redux/omnis-extensions/metaboxes/enqueue.php:508
+msgid "There was an error saving. Here is the result of your action:"
+msgstr ""
+
+#: includes/redux/omnis-extensions/metaboxes/enqueue.php:509
+msgid ""
+"There was a problem with your action. Please try again or reload the page."
+msgstr ""
+
+#: includes/redux/omnis-extensions/metaboxes/extension_metaboxes.php:824
+msgid "Options"
+msgstr ""
+
+#: includes/redux/omnis-extensions/metaboxes/extension_metaboxes.php:996
+msgid "Settings Imported!"
+msgstr ""
+
+#: includes/redux/omnis-extensions/metaboxes/extension_metaboxes.php:999
+msgid "Settings have changed, you should save them!"
+msgstr ""
+
+#: includes/redux/omnis-extensions/metaboxes/extension_metaboxes.php:1003
+#: includes/redux/omnis-extensions/metaboxes/extension_metaboxes.php:1308
+msgid "error(s) were found!"
+msgstr ""
+
+#: includes/redux/omnis-extensions/metaboxes/extension_metaboxes.php:1007
+msgid "warning(s) were found!"
+msgstr ""
+
+#: includes/redux/omnis-extensions/metaboxes/extension_metaboxes.php:1012
+msgid "Expand"
+msgstr ""
+
+#: includes/redux/omnis-extensions/metaboxes/extension_metaboxes.php:1314
+msgid "warnings(s) were found!"
+msgstr ""
+
+#: includes/redux/omnis-extensions/omnis_color_advanced/omnis_color_advanced/field_omnis_color_advanced.php:86
+msgid "Clear"
+msgstr ""
+
+#: includes/redux/omnis-extensions/omnis_color_advanced/omnis_color_advanced/field_omnis_color_advanced.php:87
+msgid "Select Color"
+msgstr ""
+
+#: includes/redux/omnis-extensions/omnis_fields/omnis_fields/field_omnis_fields.php:118
+#: includes/redux/omnis-extensions/omnis_typo/omnis_typo/field_omnis_typo.php:116
+msgid "Default"
+msgstr ""
+
+#: includes/redux/omnis-extensions/omnis_typo/omnis_typo/field_omnis_typo.php:120
+#: includes/redux/omnis-extensions/omnis_typo/omnis_typo/field_omnis_typo.php:121
+#: includes/redux/omnis-extensions/omnis_typo/omnis_typo/field_omnis_typo.php:122
+msgid "Font Family"
+msgstr ""
+
+#: includes/redux/omnis-extensions/omnis_typo/omnis_typo/field_omnis_typo.php:124
+msgid "Theme Fonts"
+msgstr ""
+
+#: includes/redux/omnis-extensions/omnis_typo/omnis_typo/field_omnis_typo.php:152
+#: includes/redux/omnis-extensions/omnis_typo/omnis_typo/field_omnis_typo.php:153
+#: includes/redux/omnis-extensions/omnis_typo/omnis_typo/field_omnis_typo.php:154
+msgid "Font Weight"
+msgstr ""
+
+#: includes/redux/omnis-extensions/omnis_typo/omnis_typo/field_omnis_typo.php:172
+#: includes/redux/omnis-extensions/omnis_typo/omnis_typo/field_omnis_typo.php:173
+msgid "Font Size"
+msgstr ""
+
+#: includes/redux/omnis-extensions/omnis_typo/omnis_typo/field_omnis_typo.php:180
+#: includes/redux/omnis-extensions/omnis_typo/omnis_typo/field_omnis_typo.php:181
+msgid "Line Height"
+msgstr ""
+
+#: includes/redux/omnis-extensions/omnis_typo/omnis_typo/field_omnis_typo.php:188
+#: includes/redux/omnis-extensions/omnis_typo/omnis_typo/field_omnis_typo.php:189
+msgid "Letter Spacing"
+msgstr ""
+
+#: includes/redux/omnis-extensions/omnis_typo/omnis_typo/field_omnis_typo.php:195
+#: includes/redux/omnis-extensions/omnis_typo/omnis_typo/field_omnis_typo.php:196
+#: includes/redux/omnis-extensions/omnis_typo/omnis_typo/field_omnis_typo.php:197
+msgid "Text Transform"
+msgstr ""
+
+#: includes/redux/omnis-extensions/omnis_typo/omnis_typo/field_omnis_typo.php:213
+#: includes/redux/omnis-extensions/omnis_typo/omnis_typo/field_omnis_typo.php:214
+#: includes/redux/omnis-extensions/omnis_typo/omnis_typo/field_omnis_typo.php:215
+msgid "Font Style"
+msgstr ""
+
+#: includes/tinymce/insert-component.php:47
+msgid "None"
+msgstr ""
+
+#: includes/woocommerce/class-wc-widget-price-filter.php:25
+msgid "Display a slider to filter products in your store by price."
+msgstr ""
+
+#: includes/woocommerce/class-wc-widget-price-filter.php:27
+msgid "Filter Products by Price"
+msgstr ""
+
+#: includes/woocommerce/class-wc-widget-price-filter.php:31
+msgid "Filter by price"
+msgstr ""
+
+#: includes/woocommerce/class-wc-widget-price-filter.php:32
+#: includes/woocommerce/class-wc-widget-recent-reviews.php:30
+msgid "Title"
+msgstr ""
+
+#: includes/woocommerce/class-wc-widget-price-filter.php:108
+msgid "Min price"
+msgstr ""
+
+#: includes/woocommerce/class-wc-widget-price-filter.php:109
+msgid "Max price"
+msgstr ""
+
+#: includes/woocommerce/class-wc-widget-price-filter.php:111
+msgid "Filter"
+msgstr ""
+
+#: includes/woocommerce/class-wc-widget-price-filter.php:113
+msgid "Price:"
+msgstr ""
+
+#: includes/woocommerce/class-wc-widget-recent-reviews.php:23
+msgid "Display a list of recent reviews from your store."
+msgstr ""
+
+#: includes/woocommerce/class-wc-widget-recent-reviews.php:25
+msgid "Recent Product Reviews"
+msgstr ""
+
+#: includes/woocommerce/class-wc-widget-recent-reviews.php:29
+msgid "Recent reviews"
+msgstr ""
+
+#: includes/woocommerce/class-wc-widget-recent-reviews.php:38
+msgid "Number of reviews to show"
+msgstr ""
+
+#: includes/woocommerce/class-wc-widget-recent-reviews.php:83
+#, php-format
+msgid "by %s"
+msgstr ""

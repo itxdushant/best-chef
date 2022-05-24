@@ -1,0 +1,20 @@
+<wpml-config>
+     <custom-types>
+        <custom-type translate="1">portfolio</custom-type>
+    </custom-types>
+    <custom-fields>
+        <custom-field action="ignore">post_views_count</custom-field>
+    </custom-fields>
+    <taxonomies>
+        <taxonomy translate="1">portfolio_category</taxonomy>
+        <taxonomy translate="1">portfolio_tag</taxonomy>
+    </taxonomies>
+    <admin-texts>
+        <key name="creativa_options">
+            <key name="opt-top-bar-text" />
+            <key name="opt-copyrights" />
+            <key name="opt-portfolio-custom-slug" />
+            <key name="opt-shop-welcome" />
+        </key>
+    </admin-texts>
+</wpml-config>

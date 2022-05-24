@@ -1,0 +1,877 @@
+@extends('layouts.main')
+@section('styles')
+<link rel="stylesheet" href="{{asset('public/css/croppie.css')}}">
+<!-- <link rel="stylesheet" href="{{asset('public/css/bootstrap-datepicker.min.css')}}"> -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.9.0/css/bootstrap-datepicker3.min.css">
+<style type="text/css">
+    td.day.disabled {
+        opacity: 0.2;
+    }
+    .highlight {
+    background: #d3ab53 !important;
+    color: #fff;
+    }
+    .chef-edit-photo input#upload {
+    width: 1px;
+}
+    .invalid-feedback {
+        display: block !important;
+    }
+    .sweet-alert.showSweetAlert.visible h2 {
+        padding:10px !important;
+    }
+	
+	.choose-file-btn{
+		background:#50555a !important;
+		border-color:#50555a !important;	
+		display: block;
+		text-align: center;
+		margin: auto !important;
+	}
+	
+	.croppie-container {
+        padding: 10px;
+	}
+    .vanilla-rotate {
+        display: none;
+    }
+	#certificate_data_more{
+		margin-left: -18px;
+	}
+</style>
+@endsection
+@section('title', 'Profile')
+@section('content')
+<!-- banner -->
+<section class="inner-page-banner">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="page-title-wrap text-center">
+                    <h1 class="page-title-heading">Chef’s Profile</h1>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- //banner -->
+<section class="body-data-box">
+    <?php //echo "<pre>";print_r($menus);?>
+    <div class="container-fluid">
+        <div class="row">
+            @include('layouts.slic.chef_sidebar')
+            <div class="col-md-8 col-lg-9" style="margin-top:10px;">
+			@if(!$profile->experience || !$profile->miles_away || !$profile->miles_away)
+				<div class="alert alert-info">
+					Please complete your profile to get hired
+				</div>
+				@endif
+				<?php
+				$dts = @unserialize(Auth::user()->available_dates);
+                $status = Auth::user()->status;
+				?>
+				@if(!$dts)
+				<div class="alert alert-info">
+					Please set available dates/times to get hired <a href="#availableDatesect">click here</a>.
+				</div>
+				@endif
+				@if(!$menus)
+				<div class="alert alert-info">
+					Please add at least one meal to get hired <a href="{{ url('chef/menus') }}">click here</a>
+				</div>
+				@endif
+                @if(!$status && $menus && $dts)
+                <div class="alert alert-info">
+                    We are reviewing your profile will send you email as soon as we review it.
+                </div>
+				@endif
+				
+                <div class="page-inner-section-main">
+                    @if (session('status'))
+                    <div class="alert alert-success" role="alert">
+                        {{ session('status') }}
+                    </div>
+                    @endif
+                    @if (session('error'))
+                    <div class="alert alert-danger">
+                        {{ session('error') }}
+                    </div>
+                    @endif
+                    @if (session('success'))
+                    <div class="alert alert-success">
+                        {{ session('success') }}
+                    </div>
+                    @endif
+					
+                    <form  action="{{ url('chef/update-profile') }}" method="post" class="edit-profile-form-box chef-account">
+                        @csrf
+                       
+                            <div class="row">
+                                <div class="col-md-12 chef-account-data-row">
+                                    <div class="row">
+                                        <div class="col-md-12 text-center">
+                                            <a href="#" class="profile-img" data-toggle="modal" data-target="#edit-photo" class="active" ><img class="user-edit-img" alt="user avtar" src="{{asset('public/uploads/profiles')}}/{{$profile->profile_pic}}" onerror="this.onerror=null;this.src='{{asset('public/img/default-user.png')}}';"  /></a><br/>
+                                            <a href="#" class="" data-toggle="modal" data-target="#edit-photo" class="active">Edit Photo</a>
+                                            <!-- <div class="row"> -->
+                                            <!-- </div>  -->
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-6 chef-account-data-row">
+                                    <label>First Name</label>
+                                    <input type="text" name="first_name" placeholder="John" value="{{$profile->first_name}}" required />
+                                </div>
+                                <div class="col-md-6 chef-account-data-row">
+                                    <label>Last Name</label>
+                                    <input type="text" name="last_name" placeholder="Doe" value="{{$profile->last_name}}" required/>
+                                </div>
+                                <div class="col-md-6 chef-account-data-row">
+                                    <label>Email</label>
+                                    <input type="email" name="email" placeholder="myemail@gmail.com" value="{{$profile->email}}" required pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$"/>
+                                    @if ($errors->has('email'))
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $errors->first('email') }}</strong>
+                                    </span>
+                                    @endif
+                                </div>
+                                <div class="col-md-6 chef-account-data-row">
+                                    <label>Phone</label>
+                                    <input type="tel" name="phone_number" value="{{$profile->phone_number}}" required/>
+                                </div>
+                                <div class="col-md-6 chef-account-data-row">
+                                    <label>College</label>
+                                    <input type="text" name="college" placeholder="" value="{{$profile->college}}"/>
+                                </div>
+                                <div class="col-md-6 chef-account-data-row">
+                                    <label class="">Completion Year</label>
+                                    <input class="" type="number" min="0" name="graduate_year" max="9999" placeholder="" value="{{$profile->graduate_year}}"/>
+                                </div>
+                                <div class="col-md-6 chef-account-data-row">
+                                    <label class="">Years Experience</label>
+                                    <input class="" type="number" min="0" name="experience" max="99" placeholder="" value="{{$profile->experience}}" required/>
+                                </div>
+                                
+                                <!--<div class="col-md-12 chef-account-data-row">
+                                    <div class="row">
+                                        
+                                    </div>
+                                </div> -->
+                                <!--  <div class="col-md-12 chef-account-data-row">
+                                    <label>Location</label>
+                                    <input type="text" name="address" placeholder="4876 S. Redwood Street"  value="{{$profile->address}}"  />
+                                </div> -->
+                                <!--<div class="col-md-12 chef-account-data-row">
+                                    <div class="row">
+                                        
+                                    </div>
+                                </div>-->
+                                <div class="col-md-6 chef-account-data-row">
+                                    <label class="">Service Area by Zip Code<!--<a class="search-tooltip"> <i class="fas fa-info-circle"></i><span class="tooltiptext">How many miles outside of this zip code do you want to travel?</span></a>--></label>
+                                    <input class="" type="text" name="service_area" placeholder="" value="{{$profile->service_area}}" required/>
+                                </div>
+                                <div class="col-md-6 chef-account-data-row">
+                                    <label class="">Service Area Range
+                                        <a class="search-tooltip"> <i class="fas fa-info-circle"></i><span class="tooltiptext">How many miles outside of this zip code do you want to travel?</span></a>
+                                    </label>
+                                    <!-- <input class="qualification" type="text" name="miles_away" placeholder="" value="{{$profile->miles_away}}" /> -->
+                                    <select class="custom-select dark" name="miles_away" placeholder="" value="{{$profile->miles_away}}" required oninvalid="this.setCustomValidity('Please select a range')" oninput="setCustomValidity('')">
+                                        <option value="">Select</option>
+                                        <option @if($profile->miles_away == "5") selected @endif value="5">5</option>
+                                        <option @if($profile->miles_away == "10") selected @endif value="10">10</option>
+                                        <option @if($profile->miles_away == "20") selected @endif value="20">20</option>
+                                        <option @if($profile->miles_away == "30") selected @endif value="30">30</option>
+                                    </select>
+                                </div>
+                                <!--<div class="col-md-12 chef-account-data-row">
+                                    <label>Available Dates/Times</label>
+                                    <input type="text" name="available_dates" class="date" value="{{$profile->available_dates}}"/>
+                                </div> -->
+                                <div class="col-md-6 chef-account-data-row">
+                                    <label>Video Url<a class="search-tooltip"> <i class="fas fa-info-circle"></i><span class="tooltiptext">To increase your chances of getting hired, please provide a video displaying yourself and your work.</span></a></label>
+                                    <input type="url" name="video_url" value="{{$profile->video_url}}" class="form-control" />
+                                </div>
+                                <div class="col-md-12 chef-account-data-row">
+                                    <label>Bio</label>
+                                    <textarea name="bio" class="form-control" required>{{$profile->bio}}</textarea>
+                                </div>
+                               
+                                <div class="col-md-12 text-left">
+                                    <input style="margin-top:10px;" type="button" id="add_more_certificate"  value="ADD MORE" />
+                                </div>
+                                <div class="col-md-12 text-left">
+                                    <!--<input type="submit" name="EDIT" value="Edit Profile" />-->
+                                    <input type="submit" name="EDIT" value="Update Profile" />
+                                    <!-- <a href="{{route('chef-dates')}}">Set Available Dates</a> -->
+                                </div>
+                            </div>
+                        
+                    </form>
+                </div>
+                <div class="border-box-frame mx-md-4 p-md-4 mt-md-4" id="availableDatesect">
+                    <div class="box-section-title">Available Dates</div>
+                    <br/>
+                    <?php 
+                      $datesarray = unserialize($profile->available_dates); 
+                      $datesarrayval = $datesarray['available_dates'];
+                    ?>
+                    <div class="row">
+						<div class="col-md-8">
+							<div class="available_dates-sec p-md-4">      
+								<form class=""  action="#" method="post" id="dates-form">
+									@csrf            
+									<div class="ava-datepicker1"></div> 
+									<input type="hidden" name="available_dates" id="available_dates" value="<?php echo $datesarrayval; ?>"> 
+									
+									<div class="avail-ble_submit-details submit-Profile-frm next_tab">    
+										<input type="button" class="btn btn-success" name="EDIT" id="add_dates" value="SUBMIT" />
+										<button class="btn btn-success" type="button" id="selectAllDates">Select All</button>
+                                        <button class="btn btn-success" type="button" id="clearAllDates">Clear All</button>
+									</div>
+								</form>   
+							</div>
+						</div>						
+                    </div>
+                    <?php
+                    $start = ["12:00 AM","01:00 AM","02:00 AM","03:00 AM","04:00 AM","05:00 AM","06:00 AM","07:00 AM","08:00 AM","09:00 AM","10:00 AM","11:00 AM","12:00 PM","01:00 PM","02:00 PM","03:00 PM","04:00 PM","05:00 PM","06:00 PM","07:00 PM","08:00 PM","09:00 PM","10:00 PM","11:00 PM"];
+                    $end = ["12:00 AM","01:00 AM","02:00 AM","03:00 AM","04:00 AM","05:00 AM","06:00 AM","07:00 AM","08:00 AM","09:00 AM","10:00 AM","11:00 AM","12:00 PM","01:00 PM","02:00 PM","03:00 PM","04:00 PM","05:00 PM","06:00 PM","07:00 PM","08:00 PM","09:00 PM","10:00 PM","11:00 PM"];
+                    $vdates = [];
+                    $vspl_dates = [];
+                    $adates =  @unserialize($profile->available_dates);
+                    if($adates && isset($adates["dates"]) &&  count($adates["dates"]) ) {
+                    $vdates = $adates["dates"];
+                    }
+                    if($adates && isset($adates["spl_dates"]) &&  count($adates["spl_dates"]) ) {
+                    $vspl_dates = $adates["spl_dates"];
+                    }
+                    ?>
+                    <form class=""  action="#" method="post" id="dates-form1" style="display: none;">
+                        @csrf
+                       
+                            <div class="row">
+                                <div class="col-md-12 chef-account-data-row">
+                                    <h4 class="pl-lg-0 pl-3">Daily</h4>
+                                    <div class="week">
+									 <span class="day-name hidden-xs">&nbsp;</span>
+									 <span class="day-name hidden-xs" >From</span>
+									 <span class="day-name hidden-xs">To</span>
+									</div>
+                                    <div class="week">
+                                        <span class="day-name">Sunday</span>
+										<span class="day-name visible-xs" >From</span>
+                                        <select class="time-list" name="dates[sunday][start]">
+                                            @foreach($start as $val)
+                                            <option {{ ( isset($vdates["sunday"]["start"]) && $val == $vdates["sunday"]["start"] )  ? "selected"  : "" }} value="{{$val}}">{{$val}}</option>
+                                            @endforeach
+                                        </select>
+                                        <span> - </span>
+										<span class="day-name visible-xs">To</span>
+                                        <select class="time-list" name="dates[sunday][end]">
+                                            @foreach($end as $val)
+                                            <option {{ ( isset($vdates["sunday"]["end"]) && $val == $vdates["sunday"]["end"] )  ? "selected"  : "" }} value="{{$val}}">{{$val}}</option>
+                                            @endforeach
+                                        </select>										
+                                        <span class="not-available-mob">
+										<input class="closed-checkbox" type="checkbox" name="dates[sunday][close]" {{ ( isset($vdates["sunday"]["close"]) )  ? "checked"  : "" }}> Not Available
+										</span>
+                                    </div>
+                                    
+                                    <div class="week">
+                                        <span class="day-name">Monday</span>
+										<span class="day-name visible-xs" >From</span>
+                                        <select class="time-list" name="dates[monday][start]">
+                                            @foreach($start as $val)
+                                            <option {{ ( isset($vdates["monday"]["start"]) && $val == $vdates["monday"]["start"] )  ? "selected"  : "" }} value="{{$val}}">{{$val}}</option>
+                                            @endforeach
+                                        </select>
+                                        <span> - </span>
+										<span class="day-name visible-xs">To</span>
+                                        <select class="time-list" name="dates[monday][end]">
+                                            @foreach($end as $val)
+                                            <option {{ ( isset($vdates["monday"]["end"]) && $val == $vdates["monday"]["end"] )  ? "selected"  : "" }} value="{{$val}}">{{$val}}</option>
+                                            @endforeach
+                                        </select>
+                                        <span class="not-available-mob">
+										<input class="closed-checkbox" type="checkbox" name="dates[monday][close]" {{ ( isset($vdates["monday"]["close"]) )  ? "checked"  : "" }}> Not Available
+										</span>
+                                    </div>
+                                   
+                                    <div class="week">
+                                        <span class="day-name">Tuesday</span>
+										<span class="day-name visible-xs" >From</span>
+                                        <select class="time-list" name="dates[tuesday][start]">
+                                            @foreach($start as $val)
+                                            <option {{ ( isset($vdates["tuesday"]["start"]) && $val == $vdates["tuesday"]["start"] )  ? "selected"  : "" }} value="{{$val}}">{{$val}}</option>
+                                            @endforeach
+                                        </select>
+                                        <span> - </span>
+										<span class="day-name visible-xs">To</span>
+                                        <select class="time-list" name="dates[tuesday][end]">
+                                            @foreach($end as $val)
+                                            <option {{ ( isset($vdates["tuesday"]["end"]) && $val == $vdates["tuesday"]["end"] )  ? "selected"  : "" }} value="{{$val}}">{{$val}}</option>
+                                            @endforeach
+                                        </select>
+                                        <span class="not-available-mob">
+										<input class="closed-checkbox" type="checkbox" name="dates[tuesday][close]" {{ ( isset($vdates["tuesday"]["close"]) )  ? "checked"  : "" }}> Not Available
+										</span>
+                                    </div>
+                                    
+                                    <div class="week">
+                                        <span class="day-name">Wednesday</span>
+										<span class="day-name visible-xs" >From</span>
+                                        <select class="time-list" name="dates[wednesday][start]">
+                                            @foreach($start as $val)
+                                            <option {{ ( isset($vdates["wednesday"]["start"]) && $val == $vdates["wednesday"]["start"] )  ? "selected"  : "" }} value="{{$val}}">{{$val}}</option>
+                                            @endforeach
+                                        </select>
+                                        <span> - </span>
+										<span class="day-name visible-xs">To</span>
+                                        <select class="time-list" name="dates[wednesday][end]">
+                                            @foreach($end as $val)
+                                            <option {{ ( isset($vdates["wednesday"]["end"]) && $val == $vdates["wednesday"]["end"] )  ? "selected"  : "" }} value="{{$val}}">{{$val}}</option>
+                                            @endforeach
+                                        </select>
+                                        <span class="not-available-mob">
+										<input class="closed-checkbox" type="checkbox" name="dates[wednesday][close]" {{ ( isset($vdates["wednesday"]["close"]) )  ? "checked"  : "" }}> Not Available
+										</span>
+                                    </div>
+                               
+                                    <div class="week">
+                                        <span class="day-name">Thursday</span>
+										<span class="day-name visible-xs" >From</span>
+                                        <select class="time-list" name="dates[thursday][start]">
+                                            @foreach($start as $val)
+                                            <option {{ ( isset($vdates["thursday"]["start"]) && $val == $vdates["thursday"]["start"] )  ? "selected"  : "" }} value="{{$val}}">{{$val}}</option>
+                                            @endforeach
+                                        </select>
+                                        <span> - </span>
+										<span class="day-name visible-xs">To</span>
+                                        <select class="time-list" name="dates[thursday][end]">
+                                            @foreach($end as $val)
+                                            <option {{ ( isset($vdates["thursday"]["end"]) && $val == $vdates["thursday"]["end"] )  ? "selected"  : "" }} value="{{$val}}">{{$val}}</option>
+                                            @endforeach
+                                        </select>
+                                        <span class="not-available-mob">
+										<input class="closed-checkbox" type="checkbox" name="dates[thursday][close]" {{ ( isset($vdates["thursday"]["close"]) )  ? "checked"  : "" }}> Not Available
+										</span>
+                                    </div>
+                                   
+                                    <div class="week">
+                                        <span class="day-name">Friday</span>
+										<span class="day-name visible-xs" >From</span>
+                                        <select class="time-list" name="dates[friday][start]">
+                                            @foreach($start as $val)
+                                            <option {{ ( isset($vdates["friday"]["start"]) && $val == $vdates["friday"]["start"] )  ? "selected"  : "" }} value="{{$val}}">{{$val}}</option>
+                                            @endforeach
+                                        </select>
+                                        <span> - </span>
+										<span class="day-name visible-xs">To</span>
+                                        <select class="time-list" name="dates[friday][end]">
+                                            @foreach($end as $val)
+                                            <option {{ ( isset($vdates["friday"]["end"]) && $val == $vdates["friday"]["end"] )  ? "selected"  : "" }} value="{{$val}}">{{$val}}</option>
+                                            @endforeach
+                                        </select>
+                                        <span class="not-available-mob">
+										<input class="closed-checkbox" type="checkbox" name="dates[friday][close]" {{ ( isset($vdates["friday"]["close"]) )  ? "checked"  : "" }}> Not Available
+										</span>
+                                    </div>
+                                    
+                                    <div class="week">
+                                        <span class="day-name">Saturday</span>
+										<span class="day-name visible-xs" >From</span>
+                                        <select class="time-list" name="dates[saturday][start]">
+                                            @foreach($start as $val)
+                                            <option {{ ( isset($vdates["saturday"]["start"]) && $val == $vdates["saturday"]["start"] )  ? "selected"  : "" }} value="{{$val}}">{{$val}}</option>
+                                            @endforeach
+                                        </select>
+                                        <span> - </span>
+										<span class="day-name visible-xs">To</span>
+                                        <select class="time-list" name="dates[saturday][end]">
+                                            @foreach($end as $val)
+                                            <option {{ ( isset($vdates["saturday"]["end"]) && $val == $vdates["saturday"]["end"] )  ? "selected"  : "" }} value="{{$val}}">{{$val}}</option>
+                                            @endforeach
+                                        </select>
+                                        <span class="not-available-mob">
+										<input class="closed-checkbox" type="checkbox" name="dates[saturday][close]" {{ ( isset($vdates["saturday"]["close"]) )  ? "checked"  : "" }}> Not Available
+										</span>
+                                    </div>
+                                </div>
+                                
+                                <div class="col-md-12 mt-4">
+                                    <h4 class="pl-lg-0 pl-3">Special Days</h4>
+                                </div>
+                                
+                                
+                                <div class="col-md-12">
+                                    <div class="spcl">
+                                        <div class="row">
+                                            <div class="col-md-12">
+                                                <div class="cont">
+                                                    @if(count($vspl_dates))
+                                                    @foreach($vspl_dates as $key=> $val)
+                                                    <div class="week">
+                                                        <span class="datepicker-main"><input type="text" name="spl_dates[{{$key}}][date]" value="{{$val['date']}}" class="datepicker"></span>
+                                                        <select class="time-list" name="spl_dates[{{$key}}][start]">
+                                                            @foreach($start as $val2)
+                                                            <option {{($val['start'] == $val2) ? "selected" : "" }} value="{{$val2}}">{{$val2}}</option>
+                                                            @endforeach
+                                                        </select>
+                                                        <span> - </span>
+                                                        <select class="time-list" name="spl_dates[{{$key}}][end]">
+                                                            @foreach($end as $val2)
+                                                            <option {{($val['end'] == $val2) ? "selected" : "" }} value="{{$val2}}">{{$val2}}</option>
+                                                            @endforeach
+                                                        </select>
+                                                        <input class="closed-checkbox" type="checkbox" name="spl_dates[{{$key}}][close]" {{ ( isset($val["close"]) )  ? "checked"  : "" }}> Not Available
+                                                        <span><a href="#" class="del-fld">Delete</a></span>
+                                                    </div>
+                                                    @endforeach
+                                                    @endif
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-md-12 text-left">
+                                                <button class="btn btn-success" type="button" id="add-more">Add Days</button>
+                                                <input type="button" class="btn btn-success" name="EDIT" id="add_dates1" value="SUBMIT" />
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                    </form>
+                </div>
+
+                <div class="border-box-frame mx-md-4 p-md-4">
+                    <div class="box-section-title">Reset Password</div>
+                    <form name="" action="{{ url('chef/change-password') }}" method="post" class="edit-profile-form-box py-md-2">
+                        @csrf
+                        
+						<div class="row">
+							<div class="col-md-6">
+								<label>Current Password</label>
+								<input id="confirm-password" type="password" class="{{ $errors->has('password') ? ' is-invalid' : '' }}" name="password" required>
+								@if ($errors->has('password'))
+								<span class="invalid-feedback" role="alert">
+									<strong>{{ $errors->first('password') }}</strong>
+								</span>
+								@endif
+								<label>New Password</label>
+								<input id="new-password" type="password" name="new-password" required>
+								@if ($errors->has('newpassword'))
+								<span class="invalid-feedback" role="alert">
+									<strong>{{ $errors->first('newpassword') }}</strong>
+								</span>
+								@endif
+								<label>Confirm Password</label>
+								<input id="new-password-confirm" type="password" name="new-password_confirmation" required>
+								<input type="submit" name="EDIT" value="UPDATE PASSWORD" />
+							</div>
+						</div>
+                        
+                    </form>
+                </div>
+				
+            </div>
+        </div>
+    </div>
+</section>
+
+<div class="modal fade chef-edit-photo" id="edit-photo" tabindex="-1" role="dialog" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <div class="modal-header text-center">
+				<h2 class="modal-title text-center">Edit Photo</h2>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+					<span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+			
+            <div class="modal-body">
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="text-center">
+                            <div class="col-md-12 col-sm-12 col-lg-12">
+                                <div id="upload-demo" style="width:300px;"></div>							
+                            </div>
+                            <div class="col-md-12 col-sm-12 col-lg-12 marg-15">
+                                <button class="vanilla-rotate btn btn-success" data-deg="-90">Rotate Left</button>
+                                <button class="vanilla-rotate btn btn-success" data-deg="90">Rotate Right</button>
+                            </div>
+							<button type="button" class="choose-file-btn" style="display: inline-block;">Change Image</button>
+							<input type="file" id="upload" style="visibility:hidden;" accept="image/*" />
+							<button type="button" class="btn btn-success upload-result" style="background-color: green!important; display: none;">Choose Image</button>
+							                            <div class="err"></div>
+						</div>
+					</div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section('scripts')
+
+<script type="text/javascript">
+	jQuery(document).ready(function($){
+		$(".choose-file-btn").click(function() { 
+		    $("#upload").trigger('click');
+		});
+	});
+</script>	
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.9.0/js/bootstrap-datepicker.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.min.js"></script>
+
+
+<script src="{{asset('public/js/croppie.js')}}"></script>
+<script type="text/javascript">
+var today = new Date();
+var monthdate =  today.getMonth();
+var monthdatetest =  today.getMonth();
+var flag = false;
+$(document).ready(function() {
+
+    Array.prototype.unique = function() {
+    //console.log('here');
+      return this.filter(function (value, index, self) { 
+        return self.indexOf(value) === index;
+      });
+    }
+    $.ajaxSetup({
+        headers: {
+            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+        }
+    });
+    var count = "{{ isset($profile->certificate_data['names']) ?  sizeof($profile->certificate_data['names']) : 0}}";
+    $('#add_more_certificate').click(function(){
+         var objTo = document.getElementById('certificate_data')
+            var divtest = document.createElement("div");
+            divtest.setAttribute("class", "col-md-12 chef-account-data-row");
+            divtest.setAttribute("id", "certificate_data_more");
+            divtest.innerHTML = '<label class="remove-certdata-'+ count +'">Certification name <a href="javascript:void(0);" class="remove-cert" data-id="'+count+'">(X)</a><input type="text" name="certificate_data[names]['+count+']" value="" class="form-control remove-certdata-'+ count +'" /><label class="remove-certdata-'+ count +'">Certification number</label><input  type="text" name="certificate_data[numbers]['+count+']" value="" class="form-control remove-certdata-'+ count +'" />';
+          objTo.appendChild(divtest);
+          count++;  
+    });
+
+    $(document).on('click', '.remove-cert', function() {
+    // $('.remove-cert').on('click', function() {
+        var dataId = $(this).data('id');
+        $('.remove-certdata-' + dataId).remove();
+    });
+
+    let ava_dates = "{{$dates}}";
+    let datesArr = ava_dates.split(",");
+    let dateArray = [];
+    if (datesArr.length) {
+        for (var i = 0; i < datesArr.length; i++) {
+            let startDate = datesArr[i];
+            var currentDate = moment(startDate);
+            dateArray.push(moment(currentDate).format('YYYY-M-D'))
+        }
+    }
+
+    $('.ava-datepicker1').datepicker({
+        startDate: '1d',           
+        format: "yyyy-mm-dd",
+        todayHighlight: true,
+        multidate: true,
+    }).on('changeDate', function(e) {
+        if(e.date){
+             monthdate = e.date.getMonth();
+        }
+        var the_date = $('.ava-datepicker1').datepicker('getDates');
+        the_date = the_date.map(function(item, index, array) {
+            return moment(item).format("YYYY-MM-DD")
+        });
+        $('#available_dates').val(the_date);
+    });
+    setTimeout(function() {
+        var my_dates = $('#available_dates').val().split(",");
+        var currentmonth = monthdatetest + 1;
+        my_dates.map(function(item, index, array) {
+            var loopdate = new Date(item);
+            if(loopdate.getMonth() + 1 == currentmonth) {
+                var myDate2 = my_dates[index];
+                my_dates.splice(index, 1);
+                my_dates = [myDate2].concat(my_dates)
+            }
+        });
+        var my_dates_reverse = my_dates.reverse()
+        $('.ava-datepicker1').datepicker('setDates', my_dates_reverse )
+    }, 1000)
+
+    $('.ava-datepicker1').datepicker({
+        startDate: '1d',           
+        format: "yyyy-mm-dd",
+        todayHighlight: true,
+        multidate: true
+    }).on('changeMonth', function(e) {
+         monthdate = e.date.getMonth();
+        // console.log('E ',e, " Month --",monthdate);
+    });
+
+    $('#selectAllDates').click(function(){
+        flag = true;
+        var monthDates = [];
+        var today = new Date(); // current date
+        var end = new Date(today.getFullYear(), monthdate + 1, 0).getDate(); // end date of month
+        var all_days = [];
+        var addedDates = $('#available_dates').val().split(",");
+        for(let i = 1; i <= end; i++){
+            var month = (monthdate < 10 ? '0' + parseInt(monthdate + 1): parseInt(monthdate + 1) );
+           all_days.push(today.getFullYear() + '-' + month +'-'+ (i < 10 ? '0'+ i: i))
+        }
+        var allfinaldays = addedDates.concat(all_days);
+        allfinaldays = allfinaldays.unique();
+        //console.log('allfinaldays ', allfinaldays);
+        $('.ava-datepicker1').datepicker('setDates', allfinaldays )
+
+        var my_dates = allfinaldays;
+        var currentmonth = monthdatetest + 1;
+        my_dates.map(function(item, index, array) {
+            var loopdate = new Date(item);
+            if(loopdate.getMonth() + 1 == currentmonth) {
+                var myDate2 = my_dates[index];
+                my_dates.splice(index, 1);
+                my_dates = [myDate2].concat(my_dates)
+            }
+        });
+        var my_dates_reverse = my_dates.reverse()
+        setTimeout(function () {
+            //console.log('all selected ', my_dates_reverse);
+            $('#available_dates').val(my_dates_reverse.toString());
+        },1000);
+        // $('.ava-datepicker1').datepicker('setDates', my_dates_reverse )
+    });
+    let indx = "{{count($vspl_dates)}}" || 0;
+    indx = parseInt(indx);
+    $(document).on('click', '#add-more', function() {
+        let html = `<div class="week">
+    <span class="datepicker-main"><input type="text" name="spl_dates[${indx}][date]" class="datepicker" /></span>
+    <select class="time-list" name="spl_dates[${indx}][start]">
+        @foreach($start as $val)
+        <option value="{{$val}}">{{$val}}</option>
+        @endforeach
+    </select>
+    <span> - </span>
+    <select class="time-list" name="spl_dates[${indx}][end]">
+        @foreach($end as $val)
+        <option value="{{$val}}">{{$val}}</option>
+        @endforeach
+    </select>
+    <input class="closed-checkbox" type="checkbox" name="spl_dates[${indx}][close]"> Not Available
+    <span><a href="#" class="del-fld">Delete</a></span>
+</div>`;
+        $(".spcl .cont").append(html);
+        indx++;
+        // $('.datepicker').datepicker({
+        //     startDate: '1d',
+        //     format: 'mm/dd/yyyy',
+        //     autoclose: true
+        // });
+
+    });
+    // $('.datepicker').datepicker({
+    //     startDate: '1d',
+    //     format: 'mm/dd/yyyy',
+    //     autoclose: true
+    // });
+    $(document).on('click', '.del-fld', function(e) {
+        e.preventDefault();
+        $(this).parents('div.week').remove();
+    })
+
+    // $('.date').datepicker({
+    //     startDate: '+1d',
+    //     multidate: true,
+    //     format: 'mm/dd/yyyy',
+    //     beforeShowDay: function (date) {
+    //         var allDates = date.getFullYear() + '-' + (date.getMonth() + 1) + '-' + date.getDate();
+    //         if(dateArray.indexOf(allDates) != -1) {
+    //             return { classes: 'highlight', 'tooltip': 'Title'};
+    //         } else {
+    //             return true;
+    //         }
+    //     }
+    // });
+    // $('.date').on('changeDate', function() {
+    //     $(".bookings-list").html("");
+    //     $('#available_dates').val(
+    //         $('.date').datepicker('getFormattedDate')
+    //     );
+    // });
+    $('.datepicker').on('click', '.table-condensed .highlight', function() {
+        let dt = moment($(this).data('date')).format("MM/DD/YYYY");
+        $.ajax({
+            url: "{{route('chef-get-booking')}}",
+            type: "POST",
+            data: {
+                "date": dt
+            },
+            success: function(data) {
+                let ulList = `<tr>
+    <th>Meal Name</th>
+    <th>Booking Date</th>
+    <th>Booking Time</th>
+    <th>Guests</th>
+    <th>Location</th>
+</tr>`;
+                if (data.bookings.length) {
+                    let bookings = data.bookings;
+                    //console.log("bookings", bookings)
+                    for (let ky in bookings) {
+                        ulList += `<tr>
+    <td>${bookings[ky].name}</td>
+    <td>${bookings[ky].booking_date}</td>
+    <td>${bookings[ky].booking_time}</td>
+    <td>${bookings[ky].guests}</td>
+    <td>${bookings[ky].location}</td>
+</tr>`;
+                    }
+                }
+                $(".bookings-list").html(ulList);
+            },
+            error: function(err) {
+                console.log("err", err)
+            }
+        });
+
+    })
+    $(document).on('click', '#add_dates', function() {
+        // console.log(flag);
+        // if(flag){
+        // console.log(flag);
+        //     var available_dates_final = $('#available_dates').val().split(",");
+        //     available_dates_final = available_dates_final.reverse().toString();
+        //     $('#available_dates').val(available_dates_final);
+        // }
+        let formData = $("#dates-form").serialize();
+        $.ajax({
+            type: 'POST',
+            url: '{{route("chef-update-dates")}}',
+            data: formData,
+            success: function(data) {
+                swal('Done', data.response, 'success');
+                setTimeout(function() {
+                    location.reload();
+                }, 1800);
+            },
+            error: function(err) {
+                swal("Error!", "Please try again", "error");
+            }
+
+        });
+    })
+
+    $(document).on('click', '#clearAllDates', function() {
+        $('#available_dates').val('');
+        $('.ava-datepicker1').datepicker('setDates', [] );
+    })
+
+    
+
+    $(document).on('click', '.delete-menu', function() {
+        let menu_id = $(this).attr("data-id");
+        let that = $(this);
+        swal({
+                title: "Are you sure?",
+                text: "You want to delete this menu.",
+                type: "warning",
+                showCancelButton: true,
+                confirmButtonClass: "btn-danger",
+                confirmButtonText: "Yes, delete it!",
+                closeOnConfirm: false,
+                showLoaderOnConfirm: true
+            },
+            function() {
+                $.ajax({
+                    type: 'POST',
+                    url: '{{route("chef-delete-menu")}}',
+                    data: {
+                        'menu_id': menu_id
+                    },
+                    success: function(data) {
+                        $(".card-" + menu_id).remove();
+                        swal(data.response)
+                    },
+                    error: function(err) {
+                        swal("Error!", "Please try again", "error");
+                    }
+                });
+            });
+    });
+    var $uploadCrop = "";
+    $('#upload').on('change', function() {
+
+        var value = $(this).val(),
+            file = value.toLowerCase(),
+            extension = file.substring(file.lastIndexOf('.') + 1);
+
+        $(".err").html("")
+        let allowedExtensions = ['jpg', 'jpeg', 'png']
+        if ($.inArray(extension, allowedExtensions) == -1) {
+            $(".err").html("<p style='color:red;'>Please select only: jpg, jpeg, png format.</p>");
+            return false;
+        }
+
+        $('#upload-demo').croppie('destroy');
+        $('.upload-result').show();
+        $uploadCrop = $('#upload-demo').croppie({
+            enableExif: true,
+            enableOrientation: true,
+            viewport: {
+                width: 200,
+                height: 200
+            },
+            boundary: {
+                width: 300,
+                height: 300
+            }
+        });
+
+        var reader = new FileReader();
+        reader.onload = function(e) {
+            $uploadCrop.croppie('bind', {
+                url: e.target.result
+            }).then(function() {
+                $('.vanilla-rotate').show();
+                //console.log('jQuery bind complete');
+            });
+        }
+        reader.readAsDataURL(this.files[0]);
+    });
+    $('.vanilla-rotate').on('click', function(ev) {
+        $uploadCrop.croppie('rotate', parseInt($(this).data('deg')));
+    });
+    $('.upload-result').on('click', function(ev) {
+        $(".upload-result").text("Please wait...")
+        $uploadCrop.croppie('result', {
+            type: 'canvas',
+            size: 'viewport'
+        }).then(function(resp) {
+            $.ajax({
+                url: "{{url('/photo-upload')}}",
+                type: "POST",
+                data: {
+                    "image": resp
+                },
+                success: function(data) {
+                    $("#edit-photo").modal("hide");
+                    $(".profile-img img").attr('src', resp)
+                    $('#upload-demo').croppie('destroy');
+                    $('.upload-result').hide();
+                    setTimeout(function() {
+                        location.reload();
+                    }, 500)
+                },
+                error: function(err) {
+                    $(".upload-result").text("Update Image")
+                    swal("Error!", "Please try again", "error");
+                }
+            });
+        });
+    });
+});
+</script>
+@endsection
+@endsection
