@@ -129,7 +129,7 @@ class ChefController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function getProfile()
+    public function getAccount()
     {
 
         $profile = User::where(['id' => Auth::user()->id])->first();
@@ -152,8 +152,29 @@ class ChefController extends Controller
         }
 
         $menus = Menu::where(['user_id' => Auth::user()->id, 'status' => 0])->count();
-        return view('chef.profile')->with(["profile" => $profile, "dates" => implode(',', $dates), "menus" => $menus]);
+        return view('chef.account')->with(["profile" => $profile, "dates" => implode(',', $dates), "menus" => $menus]);
     }
+
+
+    /**
+     * 
+     *  Get  Chef Profile 
+     * 
+    */
+
+    public function getProfile(){
+        $user = User::find(auth()->user()->id);
+        if(!empty($user->meal_speciality) ){
+            $user->meal_speciality = explode(',', $user->meal_speciality);
+        }
+        if(!empty($user->certificate_data)){
+            unserialize($user->certificate_data);
+            $user->certificate_data = unserialize($user->certificate_data);
+        }
+       // dd($user);
+        return view('chef.profile', compact('user'));
+    }
+
 
     /**
      * Display a listing of the resource.
