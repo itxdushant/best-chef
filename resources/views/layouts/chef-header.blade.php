@@ -2,7 +2,7 @@
 <html lang="en">
 
 <head>
-
+ 
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link href="{{asset('css/owl.carousel.min.css')}}" type="text/css" rel="stylesheet" />
@@ -18,7 +18,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.9.0/css/bootstrap-datepicker3.min.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 
-    <title>Best Local Chefs - @yield('title')</title>
+    <title>Best Local Chefs - @yield('title')</title> 
 </head>
 
 <body>
