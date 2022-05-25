@@ -6,6 +6,7 @@ error_reporting(E_ALL);
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\ChatController;
+use App\Http\Controllers\HomeController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -25,13 +26,13 @@ use App\Http\Controllers\ChatController;
 Route::get('/php', function () {
 	return view('php');
 });
-Route::get('/', [App\Http\Controllers\HomeController::class, 'howitworks'])->name('howitworks');
-Route::get('/dev', [App\Http\Controllers\HomeController::class, 'mainPage']);
+Route::get('/', [HomeController::class, 'howitworks'])->name('howitworks');
+Route::get('/dev', [HomeController::class, 'mainPage']);
 Route::get('/email/verify/{id}', [App\Http\Controllers\Auth\VerificationController::class, 'verifyUser']);
-Route::get('/verify-email', [App\Http\Controllers\HomeController::class, 'VerifiyEmail']);
+Route::get('/verify-email', [HomeController::class, 'VerifiyEmail']);
 Route::get('/email/resend', [App\Http\Controllers\Auth\VerificationController::class, 'resend'])->name('verification.resend');
 Route::post('/sotre-media', [App\Http\Controllers\MediaController::class, 'store'])->name('sotre-media');
-
+Route::get('/join-as-chef', [HomeController::class, 'JoinAsChef']);
 
 Auth::routes(['verify' => true]);
 
@@ -123,59 +124,59 @@ Route::group(['namespace' => 'User', 'prefix' => 'user', 'middleware' => ['user'
 	Route::get('/chef-profile/{id}', [App\Http\Controllers\User\UserController::class, 'chefProfileView'])->name('chef.profile.view');
 });
 
-Route::post('/photo-upload', [App\Http\Controllers\HomeController::class, 'photoUpload']);
+Route::post('/photo-upload', [HomeController::class, 'photoUpload']);
 
-Route::get('/auto-list', [App\Http\Controllers\HomeController::class, 'autoComplete']);
-Route::get('/auto-list-zip', [App\Http\Controllers\HomeController::class, 'autoListZip']);
+Route::get('/auto-list', [HomeController::class, 'autoComplete']);
+Route::get('/auto-list-zip', [HomeController::class, 'autoListZip']);
 Route::get('/message', [ChatController::class, 'index']);
 Route::post('/chef-conversations', [ChatController::class, 'getUserMessages'])->name('chef-conversation');
 Route::post('/send-message', [ChatController::class, 'send']);
 
 
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
-Route::get('/terms-of-use', [App\Http\Controllers\HomeController::class, 'termsConditions'])->name('terms-of-use');
-Route::get('/contact-us', [App\Http\Controllers\HomeController::class, 'contactUs'])->name('contact-us');
-Route::get('/support', [App\Http\Controllers\HomeController::class, 'support'])->name('support');
-Route::Post('/support-store', [App\Http\Controllers\HomeController::class, 'supportStore'])->name('support.store');
-Route::get('/partner', [App\Http\Controllers\HomeController::class, 'partner'])->name('partner');
-Route::post('/contactus-store', [App\Http\Controllers\HomeController::class, 'contactUsStore'])->name('contactus.store');
+Route::get('/home', [HomeController::class, 'index'])->name('home');
+Route::get('/terms-of-use', [HomeController::class, 'termsConditions'])->name('terms-of-use');
+Route::get('/contact-us', [HomeController::class, 'contactUs'])->name('contact-us');
+Route::get('/support', [HomeController::class, 'support'])->name('support');
+Route::Post('/support-store', [HomeController::class, 'supportStore'])->name('support.store');
+Route::get('/partner', [HomeController::class, 'partner'])->name('partner');
+Route::post('/contactus-store', [HomeController::class, 'contactUsStore'])->name('contactus.store');
 
-Route::post('/partner-contactus-store', [App\Http\Controllers\HomeController::class, 'partnercontactUsStore'])->name('partnercontactus.partner');
-
-
-Route::get('/privacy-policy', [App\Http\Controllers\HomeController::class, 'policies'])->name('privacy-policy');
+Route::post('/partner-contactus-store', [HomeController::class, 'partnercontactUsStore'])->name('partnercontactus.partner');
 
 
-Route::get('/about-us', [App\Http\Controllers\HomeController::class, 'aboutUs'])->name('about-us');
-Route::get('/chef-how-to-forum', [App\Http\Controllers\HomeController::class, 'howtoforum'])->name('chef-how-to-forum');
-Route::get('/chefs', [App\Http\Controllers\HomeController::class, 'chefList'])->name('chef-list');
-Route::get('/chefs/{type}', [App\Http\Controllers\HomeController::class, 'topChefsList'])->name('chefs-all');
+Route::get('/privacy-policy', [HomeController::class, 'policies'])->name('privacy-policy');
+
+
+Route::get('/about-us', [HomeController::class, 'aboutUs'])->name('about-us');
+Route::get('/chef-how-to-forum', [HomeController::class, 'howtoforum'])->name('chef-how-to-forum');
+Route::get('/chefs', [HomeController::class, 'chefList'])->name('chef-list');
+Route::get('/chefs/{type}', [HomeController::class, 'topChefsList'])->name('chefs-all');
 
 // Route::get('/how-it-works', 'HomeController@howitworks')->name('how-it-works');
 
-Route::get('/find-a-chef', [App\Http\Controllers\HomeController::class, 'searchResult'])->name("menu-listing");
-Route::post('/search-data', [App\Http\Controllers\HomeController::class, 'searchData'])->name("search-data");
+Route::get('/find-a-chef', [HomeController::class, 'searchResult'])->name("menu-listing");
+Route::post('/search-data', [HomeController::class, 'searchData'])->name("search-data");
 
-Route::get('/chef/{id}/{name}', [App\Http\Controllers\HomeController::class, 'chefDetails'])->name("chef-detail");
+Route::get('/chef/{id}/{name}', [HomeController::class, 'chefDetails'])->name("chef-detail");
 
-Route::get('/user-register', [App\Http\Controllers\HomeController::class, 'userRegisterPage'])->name('user-register');
-Route::get('/chef-register', [App\Http\Controllers\HomeController::class, 'chefRegisterPage'])->name('chef-register');
-Route::post('/check-time', [App\Http\Controllers\HomeController::class, 'checkTime'])->name('check-time');
+Route::get('/user-register', [HomeController::class, 'userRegisterPage'])->name('user-register');
+Route::get('/chef-register', [HomeController::class, 'chefRegisterPage'])->name('chef-register');
+Route::post('/check-time', [HomeController::class, 'checkTime'])->name('check-time');
 
 // OAuth Routes
 Route::get('auth/{provider}', [App\Http\Controllers\Auth\AuthController::class, 'redirectToProvider']);
 Route::get('auth/{provider}/callback', [App\Http\Controllers\Auth\AuthController::class, 'handleProviderCallback']);
 
-Route::match(['get', 'post'], '/checkout', [App\Http\Controllers\HomeController::class, 'checkoutPage'])->name('checkout');
-Route::post('/pay', [App\Http\Controllers\HomeController::class, 'payChef']);
+Route::match(['get', 'post'], '/checkout', [HomeController::class, 'checkoutPage'])->name('checkout');
+Route::post('/pay', [HomeController::class, 'payChef']);
 
-Route::get('/thank-you', [App\Http\Controllers\HomeController::class, 'paymentMade'])->name('thank-you');
-Route::get('/test', [App\Http\Controllers\HomeController::class, 'test']);
+Route::get('/thank-you', [HomeController::class, 'paymentMade'])->name('thank-you');
+Route::get('/test', [HomeController::class, 'test']);
 
 // send message to chef
-Route::post('/sendMessage', [App\Http\Controllers\HomeController::class, 'sendMessage'])->name('sendMessage');
+Route::post('/sendMessage', [HomeController::class, 'sendMessage'])->name('sendMessage');
 
-Route::get('/bank-info', [App\Http\Controllers\HomeController::class, 'bankInfo'])->name('bank-info');
+Route::get('/bank-info', [HomeController::class, 'bankInfo'])->name('bank-info');
 // banking information
 
 // Route::get('/clear-cache', function() {
