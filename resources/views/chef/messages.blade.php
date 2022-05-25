@@ -2,7 +2,7 @@
 
 @section('title', 'Messages')
 <style>
-    .right {
+    /* .right {
         float: right;
         width: 100%;
     }
@@ -20,11 +20,13 @@
     .outer-msg {
         margin: 10px 0;
     }
+     */
     .outer-msg {
+        padding-top:15px;
         height: 400px;
-        overflow: scroll;
+        overflow: auto;
     }
-    /* 867942754 */
+    /* 867942754 */ 
 </style>
 @section('content')
 <!-- chef header end here -->
@@ -105,7 +107,7 @@
                             <input type="hidden" id="total_page">
                             <input type="hidden" id="next_page_url">
                             <input type="hidden" id="chef_id">
-                            <input type="text" placeholder="Typae a message…" id="msg">
+                            <input type="text" placeholder="Type a message…" id="msg">
                             <input type="hidden" name="media_ids" id="media_ids">
                             <div class="upload_doc gallery-icon">
                                 <div class="upload-file-btn-main">
@@ -292,7 +294,7 @@
                                 $('#media_ids').val(list);
                                 $("<span class=\"pip\">" +
                                     "<img class=\"imageThumb\" src=\"" + e.target.result + "\" title=\"" + file.name + "\"/>" +
-                                    "<br/><span class=\"remove\" data-id=\"" +data + "\">Remove image</span>" +
+                                    "<br/><span class=\"remove\" data-id=\"" +data + "\"> Remove image</span>" +
                                     "</span>").insertBefore(".msg-form");
                             }
                             $("#message").val('')

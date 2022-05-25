@@ -148,6 +148,7 @@ a{
     border-radius: 8px;
     background-color: #ffffff;
     border: 1px solid #979797;
+    height: 43.42px;
 }
 .footer_frst_row .col-md-3:last-child .footer-links{
     width: 45%;
@@ -187,6 +188,9 @@ a{
 }
 .fields_form .date, .fields_form .time, .fields_form .Search{
     position:relative;
+}
+.fields_form .time select,.fields_form .Search select{
+  border: 0px;
 }
 .fields_form .date:before, .fields_form .time:before, .fields_form .Search:before{
     content: '';
@@ -987,6 +991,7 @@ a{
 /* css chef listing page */
 .listin_weak_section .container{
     max-width: 95%;
+    width: 95%;
     margin-bottom: 40px;
 }
 .listin_weak_section .container h3{
@@ -1025,6 +1030,7 @@ a{
     padding-bottom: 40px;
     padding-top: 25px;
     max-width: 95%;
+    width: 95%;
 }
 .top_chef_section .row .col-md-3{
     width: 20%;
@@ -1048,6 +1054,9 @@ a{
 }
 .chef_card .like_img {
     position: relative;
+}
+.chef_card .like_img img{
+    width: 100%;
 }
 .chef_card .like_img input{
     position: absolute;
@@ -1669,6 +1678,7 @@ color: #ff0000;
     font-size: 17px;
     font-weight: 600;
     margin-bottom: 15px;
+    height: auto;
     color: #737373;
 }
 
@@ -1796,7 +1806,7 @@ color: #717171;
     margin: 0px;
 }
 .chat_prson .person_profile{
-    padding: 5px 10px 27px 70px;
+    padding: 20px 10px 35px 75px;
     position: relative;
     list-style: none;
 }
@@ -1806,7 +1816,8 @@ li.person_profile.active {
 }
 .chat_prson .person_profile img{
     position: absolute;
-    left: 10px;
+    left: 15px;
+    top: 15px;
     width: 50px;
     border-radius: 50%;
 }
@@ -1864,6 +1875,10 @@ background-color: #f9f9f9;
     font-weight: 700;
     margin-bottom: 10px;
     color: #909090;
+    margin-right: 15px;
+}
+.booking_rqst_msg img{
+  margin: 15px 0px;
 }
 .booking_rqst_msg p img{
     margin-right: 10px;
@@ -1890,7 +1905,29 @@ color: #909090;
     position: relative;
     margin: 70px 0px;
 }
-
+.message_type .pip{
+    position: absolute;
+     top: -59px;
+     left: 0px;
+    background: #f9f9f9;
+    width: 100%;
+    padding: 10px;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+}
+.message_type .pip img{
+    width: 50px;
+} 
+/* .message_type .pip .remove{
+    display: inline-block;
+   width: 10px;
+   height: 10px;
+   background: gray;
+   position: absolute;
+   left: 60px;
+   top: 5px;
+   z-index: 1;
+   } */
 .message_type input[type="text"]{
     padding: 25px;
     border: 0px;
@@ -1909,6 +1946,11 @@ font-weight: 400;
     position: absolute;
     right: 10px;
     top: 15px;
+    background-color: #52d4d3 !important;
+    border-radius: 8px;
+    padding: 10px 30px !important;
+    display: inline-block;
+    color: #010101 !important;
 }
 /* .upload_doc.gallery-icon {
 
@@ -1922,7 +1964,7 @@ font-weight: 400;
 }
 .message_type .upload-file-btn-main{
     position: absolute;
-    right: 13%;
+    right: 25%;
     top:33px;
 }
 
@@ -2476,7 +2518,7 @@ color: #7b7b7b;
 @media (min-width: 992px){
 .col-md-6 {
     width: 50%;
-    margin-top: 27px !important;
+    /* margin-top: 27px !important; */
 }}
 
 .nextContent {

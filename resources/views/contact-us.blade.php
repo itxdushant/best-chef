@@ -78,7 +78,7 @@
                                  </div>
                                  
                                 <div class="mt-3">
-                                <a href="#" class="btn_c btn_chef"> <button type="submit" name="btnSubmit">Send</button></a>
+                                <a href="#" class=" "> <button class="btn_c btn_chef" type="submit" name="btnSubmit">Send</button></a>
                               </div>
                     </div>
 </form>

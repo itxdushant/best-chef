@@ -141,7 +141,7 @@
           </div>
         </div>
         @endfor
-
+      </div>
     </div>
     <!-- another section -->
     <div class="book_chef_section">

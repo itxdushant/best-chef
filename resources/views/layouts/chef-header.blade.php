@@ -36,7 +36,7 @@
                         <a href="{{ route('chef.profile') }}" class="nav-link{{ request()->routeIs('chef.profile') ? ' active' : '' }}">Profiles</a>
                     </li>
                     @else
-                    <a class="nav-link" aria-current="page" href="#">Account</a>
+                  <li class="nav-item">  <a class="nav-link" aria-current="page" href="#">Account</a></li>
                     @endif
 
 
