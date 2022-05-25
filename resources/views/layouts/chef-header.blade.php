@@ -23,9 +23,8 @@
 
 <body>
     <!-- chef header -->
-    <nav class="navbar navbar-expand-lg  chef_header chef_headerfff chef_header_2">
+    <!-- <nav class="navbar navbar-expand-lg  chef_header chef_headerfff chef_header_2">
         <div class="container-fluid">
-            <!-- <a class="navbar-brand" href="#">Navbar</a> -->
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
@@ -40,19 +39,6 @@
                     @endif
 
 
-                    <!-- <a class="nav-link" aria-current="page" href="#">Account</a> -->
-
-
-
-                    <!-- <li class="nav-item">
-                        <a class="nav-link" href="#">Requests</a>
-                    </li> -->
-                    <!-- <li class="nav-item">
-                        <a class="nav-link" href="{{ route('booking-history') }}">Booking History</a>
-                    </li> -->
-                    <!-- <li class="nav-item">
-                        <a class="nav-link" href="{{ route('bank-info') }}">Banking</a>
-                    </li> -->
                     <li class="nav-item">
                         <a href="{{ route('chef-messages') }}" class="nav-link{{ request()->routeIs('chef-messages') ? ' active' : '' }}">Messages</a>
 
@@ -81,7 +67,58 @@
                 </ul>
             </div>
         </div>
-    </nav>
+    </nav> -->
+
+    <!-- chef header   -->
+  <nav class="navbar navbar-expand-lg  chef_header chef_headerfff chef_header_2">
+    <div class="container-fluid">
+      <!-- <a class="navbar-brand" href="#">Navbar</a> -->
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNavDropdown">
+        <ul class="navbar-nav ms-auto">
+          <li class="nav-item">
+            <a class="nav-link active" aria-current="page" href="{{route('howitworks')}}">Home</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="{{route('menu-listing')}}">Find a Chef</a>
+          <li class="nav-item">
+            <a class="nav-link" href="#">Experiences</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="{{route('contact-us')}}">Contact</a>
+          </li>
+          <li class="nav-item">
+         
+           <a class="nav-link" href="#">Chef? Join Today</a>
+            <!-- <a class="nav-link" href="join-as-a-chef.html">Chef? Join Today</a> -->
+          </li>
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+              <img src="{{asset('images/login.png')}}">
+            </a>
+            <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+              @guest
+
+              <li><a class="dropdown-item" href="{{route('login')}}">login</a></li>
+              <li><a class="dropdown-item" href="{{route('register')}}">Sign Up</a></li>
+              <li><a class="dropdown-item" href="{{route('support')}}">Support</a></li>
+              @else
+
+              <li><a class="dropdown-item" href="{{url(Auth::user()->user_type)}}">{{auth()->user()->first_name }} {{auth()->user()->last_name }}</a></li>
+              <li><a class="dropdown-item" href="{{route('logout')}}" onclick="event.preventDefault(); document.getElementById('logout-form1').submit();">logout</a></li>
+              <form id="logout-form1" action="{{ route('logout') }}" method="POST" style="display: none;">
+                @csrf
+              </form>
+              <li><a class="dropdown-item" href="{{route('support')}}">Support</a></li>
+              @endguest
+            </ul>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
     <!-- chef header end here -->
     @yield('content')
 

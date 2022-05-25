@@ -16,7 +16,7 @@ use Illuminate\Support\Facades\Hash;
 
 use Illuminate\Support\Facades\Validator;
 
-use DB;
+use Illuminate\Support\Facades\DB;
 
 use Mail;
 
@@ -2288,4 +2288,12 @@ class HomeController extends Controller
 
     return response()->json(['response' => "Message send successfully!", 'status' => "success"]);
   }
+
+  /**
+   * Join as a Chef
+   */
+    public function JoinAsChef()
+    {
+      return view('chef.join');
+    }
 }
