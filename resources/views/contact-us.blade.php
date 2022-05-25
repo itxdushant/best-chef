@@ -77,7 +77,7 @@
 							@endif
                                  </div>
                                  
-                                <div class="mt-3">
+                                <div class="mt-3 col-md-12">
                                 <a href="#" class=" "> <button class="btn_c btn_chef" type="submit" name="btnSubmit">Send</button></a>
                               </div>
                     </div>
