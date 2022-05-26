@@ -75,7 +75,7 @@ Route::group(['namespace' => 'Chef', 'prefix' => 'chef', 'middleware' => ['chef'
 	Route::post('/update-profile', [App\Http\Controllers\Chef\ChefController::class, 'updateProfile'])->name('chef-update-profile');
 	Route::get('/add-menu', [App\Http\Controllers\Chef\ChefController::class, 'addMenuPage']);
 	Route::get('/requests', [App\Http\Controllers\Chef\ChefController::class, 'getRequests'])->name('chef-requests');
-	Route::post('/save-menu', [App\Http\Controllers\Chef\ChefController::class, 'saveMenu'])->name('save-menu');
+	Route::post('/save-menu', [App\Http\Controllers\Chef\ChefController::class, 'saveMenu'])->name('save-menu'); 
 	Route::post('/delete-menu', [App\Http\Controllers\Chef\ChefController::class, 'deleteMenu'])->name('chef-delete-menu');
 	Route::match(['get', 'post'], '/edit-menu/{id}', [App\Http\Controllers\Chef\ChefController::class, 'editMenuPage']);
 	Route::post('/req-confirm', [App\Http\Controllers\Chef\ChefController::class, 'requestConfirm']);
