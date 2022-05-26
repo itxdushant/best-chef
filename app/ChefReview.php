@@ -17,4 +17,7 @@ class ChefReview extends Model
 		'user_id', 'chef_id', 'rating', 'review', 'photos', 'bid'
     ];
     
+    public function user(){
+      return $this->hasMany(User::class, 'id', 'user_id');
+    }
 }

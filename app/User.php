@@ -10,6 +10,7 @@ use Laravel\Passport\HasApiTokens;
 class User extends Authenticatable implements MustVerifyEmail
 {
     use HasApiTokens, Notifiable;
+    protected $appends = ['rating'];
 
     /**
      * The attributes that are mass assignable.
@@ -87,5 +88,9 @@ class User extends Authenticatable implements MustVerifyEmail
     public function chats()
     { 
       return $this->hasMany(Message::class,'sender','id')->union($this->hasMany(Message::class,'receiver','id'));
+    }
+
+    public function Reviews(){
+        return $this->hasMany(ChefReview::class, 'chef_id', 'id');
     }
 }

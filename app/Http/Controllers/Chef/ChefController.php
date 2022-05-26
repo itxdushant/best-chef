@@ -16,6 +16,7 @@ use App\Booking;
 use App\PaymentDetails;
 use App\PaymentRequests;
 use App\Message;
+use App\ChefReview;
 use App\Notifications;
 use App\Mail\BookingAcceptUser;
 use App\Mail\BookingAcceptChef;
@@ -163,7 +164,13 @@ class ChefController extends Controller
     */
 
     public function getProfile(){
-        $user = User::find(auth()->user()->id);
+        //$user = User::with('Reviews')->where('id',auth()->user()->id)->first();
+        $user = User::with('Reviews', 'Reviews.user')->where('id',225)->first();
+        $ChefReview = ChefReview::where('chef_id',225)->selectRaw('SUM(rating)/COUNT(user_id) AS avg_rating')->first();
+        if(!empty($ChefReview) ){
+            $user->rating = number_format((float)$ChefReview->avg_rating, 2);
+        }
+        //$ChefReview = ChefReview::limit(10)->get();
         if(!empty($user->meal_speciality) ){
             $user->meal_speciality = explode(',', $user->meal_speciality);
         }
@@ -171,7 +178,6 @@ class ChefController extends Controller
             unserialize($user->certificate_data);
             $user->certificate_data = unserialize($user->certificate_data);
         }
-       // dd($user);
         return view('chef.profile', compact('user'));
     }
 

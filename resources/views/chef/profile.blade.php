@@ -56,14 +56,17 @@
             </div>
         </div>
         <div class="col-md-4">
-            <div class="professional_right">
-                <div class="contact_login_professional">
-                    <h4 class="h4_text">Login or Sign up to contact the chef</h4>
-                    <input type="text" placeholder="Name" >
-                    <textarea name="" id="" cols="30" rows="4" placeholder="Message"></textarea>
-                    <a href="#" class="btn_c">Contact Chef</a>
+            <form id="contact-chef">
+                <div class="professional_right">
+                    <div class="contact_login_professional">
+                        <h4 class="h4_text">Login or Sign up to contact the chef</h4>
+                        <input type="text" placeholder="Name" >
+                        <input type="email" placeholder="email" >
+                        <textarea name="" id="" cols="30" rows="4" placeholder="Message"></textarea>
+                        <a href="#" class="btn_c">Contact Chef</a>
+                    </div>
                 </div>
-            </div>
+            </form>
         </div>
     </div>
     </div>
@@ -85,33 +88,26 @@
 <div class="reviews_section">
     <div class="container">
         <div class="row">
-            <div class="col-md-6 ">
-                <div class="left_div_reviews">
-                    <h4 class="reviews_star"><img src="images/star.png" alt="">5.0 (34 reviews)</h4>
-                    <div class="review_text">
-                        <div class="card_reviews">
-                            <img src="images/reviews_1.png" alt="">
-                            <h5>Millie Sanders</h5>
-                            <span>October 2020</span>
-                        </div>
-                        <p class="p_grey">Lorem ipsum is placeholder text commonly used in the graphic, print, and publishing industries for previewing layouts and visual mockups.</p>
-                        <a href="#" class="btn_c btn_reviews">Show all 34 reviews</a>
-                    </div>
-                </div>
-            </div>
-
-            <div class="col-md-6">
-                <div class="right_div_reviews">
-                    <div class="review_text">
-                        <div class="card_reviews">
-                            <img src="images/reviews_2.png" alt="">
-                            <h5>Millie Sanders</h5>
-                            <span>October 2020</span>
-                        </div>
-                        <p class="p_grey">Lorem ipsum is placeholder text commonly used in the graphic, print, and publishing industries for previewing layouts and visual mockups.</p>
-                    </div>
-                </div>
-            </div>
+                   <h4 class="reviews_star"><img src="images/star.png" alt="">{{$user->rating}} ({{count($user->Reviews)}} reviews)</h4>
+                    @if(isset($user->Reviews) && !empty($user->Reviews))
+                        
+                        @foreach($user->Reviews as $key => $Reviews )
+                            @if($key < 2 )
+                                <div class="col-md-6">
+                                    <div class="right_div_reviews">
+                                        <div class="review_text">
+                                            <div class="card_reviews">
+                                                <img src="/uploads/profiles/{{($Reviews->user)? $Reviews->user[0]->profile_pic : '' }}" alt="">
+                                                <h5>{{($Reviews->user)? $Reviews->user[0]->first_name : '' }}</h5>
+                                                <span>{{$Reviews->created_at}}</span>
+                                            </div>
+                                            <p class="p_grey">{{$Reviews->review}}</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            @endif
+                        @endforeach
+                    @endif
         </div>
     </div>
 </div>
