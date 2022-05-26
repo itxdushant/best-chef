@@ -64,7 +64,7 @@ Route::group(['namespace' => 'Admin', 'prefix' => 'admin', 'middleware' => ['adm
 });
 
 Route::group(['namespace' => 'Chef', 'prefix' => 'chef', 'middleware' => ['chef']], function () {
-	Route::get('/', [App\Http\Controllers\Chef\ChefController::class, 'getProfile'])->name('chef.profile');
+	Route::get('/', [App\Http\Controllers\Chef\ChefController::class, 'getAccount'])->name('chef.profile'); 
 	Route::get('/profile', [App\Http\Controllers\Chef\ChefController::class, 'getProfile']);
 	Route::get('/menus', [App\Http\Controllers\Chef\ChefController::class, 'getMenus'])->name('menus');
 	Route::post('/change-password', [App\Http\Controllers\Chef\ChefController::class, 'changePassword']);
