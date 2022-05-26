@@ -215,8 +215,6 @@
       </div>
     </div>
 
-
-
     <!-- another section -->
     <div class="book_events_section top_chef_section">
       <div class="container">

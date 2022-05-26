@@ -56,7 +56,7 @@ if ($total_reviews != null) {
                {{$chef->city}}, {{$chef->state}} {{$chef->zip}}
             </p>
          </div>
-         <div class="hello" style="display:none">hello iam navdeep</div>
+         <!-- <div class="hello" style="display:none">hello iam navdeep</div> -->
          <div class="holie_links">
             <a><img src="{{asset('images/gift.png')}}" alt="">Gift</a>
 
@@ -121,7 +121,7 @@ if ($total_reviews != null) {
                @foreach ($meal_videos as $lists_videos )
                <div class=" slides">
                   <div class="btn_video_popup">
-                     <iframe width="420" height="345" src="https://www.youtube.com/embed/{{$lists_videos}}">
+                     <iframe width="100%" height="424" src="https://www.youtube.com/embed/{{$lists_videos}}">
                      </iframe>
                   </div>
                </div>

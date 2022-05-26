@@ -3,7 +3,7 @@
 @section('content')
 
 <!-- banner -->
-<section class="inner-page-banner login-inner-banner">
+<section class="inner-page-banner login-inner-banner verify_email_section">
     <div class="container">
         <div class="row">
             <div class="col-md-12">
@@ -18,7 +18,7 @@
 <!-- //banner -->
 
 <div class="content-wrap">
-<section class="login-main-section">
+<section class="login-main-section login_text_2">
     <div class="container">
         <!-- login  -->
         <div class="row">
