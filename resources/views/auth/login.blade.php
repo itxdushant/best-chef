@@ -33,7 +33,7 @@
 							</span>
 						@endif
 					</div>
-					<a class="btn_c btn_chef"><button type="submit" class="btn btn-default more-btn btn-block">Continue</button></a>
+					<a class=""><button type="submit" class=" btn_c btn_chef  btn-block">Continue</button></a>
 			    </form>
 				</div>
       </div>

@@ -65,7 +65,7 @@
                 </div>
                 <div class="mt-3">
                   <!-- <input type="submit"  class="btn_c btn_chef" name="UPDATE" value="UPDATE PROFILE" /> -->
-                  <a class="btn_c btn_chef"><button type="submit"> UPDATE PROFILE</button></a>
+                  <a class=""><button class="btn_c btn_chef update_pr" type="submit"> UPDATE PROFILE</button></a>
                 </div>
               </div>
             </form>
