@@ -32,7 +32,7 @@ li.person_profile {
 .chef_header .nav-link{
     padding: 0px 30px !important;
     font-size: 15px;
-    font-weight: 600;
+    font-weight: 500;
     font-family: 'DM Sans', sans-serif;
     color: #fff;
 }
@@ -149,6 +149,7 @@ a{
     background-color: #ffffff;
     border: 1px solid #979797;
     height: 43.42px;
+    font-family: DMSans Regular;
 }
 .footer_frst_row .col-md-3:last-child .footer-links{
     width: 45%;
@@ -380,6 +381,7 @@ a{
     font-size: 15px;
     font-weight: 700;
     color: #52d4d3;
+    text-decoration: underline;
 }
 .chef_slider .card_meals {
     border-radius: 15px;
@@ -783,7 +785,7 @@ a{
     margin-bottom: 15px;
     color: #737373;
 }
-.contact_login_professional button{
+.contact_login_professional button,.contact_login_professional a{
     padding: 10px 20px;
     border-radius: 8px;
     border: 1px solid #010101;
@@ -1445,14 +1447,16 @@ label.upload-file-btn:before{
     margin-left: 30px;
 }
 .profile_section .form_section input[type="text"], .profile_section .form_section textarea, .profile_section .form_section select{
-    border-radius: 8px;
-    border: 1px solid #979797;
-    width: 100%;
-    padding: 15px 40px;
-    font-size: 17px;
-    font-weight: 700;
-    margin-top: 20px;
-    color: #737373;
+    border-radius: 8px !important;
+    border: 1px solid #979797 !important;
+    width: 100% !important;
+    padding: 15px 40px !important;
+    font-size: 17px !important;
+    font-weight: 700 !important;
+    margin-top: 20px !important;
+    color: #737373 !important;
+    height: auto !important;
+    font-family: DMSans Regular;
 }
 .meals_s_l {
     padding: 15px 0px;
@@ -1501,9 +1505,10 @@ label.upload-file-btn:before{
     border: 1px solid #979797;
    /* width:34%;
     */
+    width: 201px;
     padding: 15px 40px;
     font-size: 17px;
-    font-weight: 700;
+    /* font-weight: 700; */
     color: #737373;
 }
 .profile_section .timings input:nth-of-type(1){
@@ -2154,10 +2159,83 @@ color: #7b7b7b;
     background-color: #52d4d3 !important;
     color: #010101 !important;
 }
-.banking_information_form .edit-profile-form-box{
+.banking_information_form .edit-profile-form-box,.profile_section .edit-profile-form-box{
     padding: 0px;
 }
-/* mobile */
+.upload-file-btn-main .upload-file-btn input{
+    display: none;
+}
+label.upload-file-btn.remove_img_z{
+    width: auto !important;
+    margin-right: 35px !important;
+}
+label.upload-file-btn.remove_img_z input{
+   display: none;
+}
+.profile_section .edit-profile-form-box.chef-account label{
+    width: auto;
+    font-family: DMSans Regular;
+    font-size: 17px;
+    font-weight: 700;
+    margin-right: 10px;
+    /* color: #737373; */
+}
+div#upload_videos{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+div#upload_videos .remove_div{
+    display: flex;
+    align-items: center;
+}
+.calender_div.available_dates-sec{
+    padding: 25px;
+    border: 1px solid #979797;
+    border-radius: 8px !important;
+    margin: 30px 0px;
+} 
+div#add_more_certificate{
+    margin-top: 30px;
+}
+.calender_div .avail-ble_submit-details.submit-Profile-frm.next_tab{
+    margin-top: 15px;
+}
+.calender_div .avail-ble_submit-details.submit-Profile-frm.next_tab .btn_chef,.updta_pr_rr .btn_chef{
+    border: 0px !important;
+    font-size: 15px !important;
+    font-weight: 700 !important;
+    text-align: center !important;
+    border-radius: 8px !important;
+    background-color: #52d4d3 !important;
+    padding: 10px 30px !important;
+    display: inline-block !important;
+    color: #010101 !important;
+    margin-right: 10px;
+}
+.calender_div table{
+    border-collapse: initial;
+}
+.calender_div .table-condensed{
+    border: 0px;
+}
+.calender_div .datepicker table tr td.active.active {
+    border-radius: 50%;
+    background-color: #52d4d3;
+}
+/* .professional-meal-section .professional_left .fifth_div .content_profile {
+    padding-left: 0px;
+} */
+div#upload_videos img#add_more_videos{
+    display: block;
+    margin-left: auto;
+}
+div#upload_videos .remove_div .remove-videodata-0{
+    margin-left: 10px;
+}
+nav.navbar.navbar-expand-lg.chef_header.chef_headerfff.chef_header_2 .navbar-nav{
+    float: right;
+}
 @media only screen and (max-width: 768px){
 .container{
     max-width: 100% !important;
@@ -2183,6 +2261,8 @@ color: #7b7b7b;
 .chef_demand_section .container .row,.best_chef_section .container .row{
     height: auto;
     padding: 30px 0px;
+    width: 97%;
+    margin: auto;
 }
 .chef_demand_section .container .row h3{
     font-size: 35px;
@@ -2449,9 +2529,7 @@ color: #7b7b7b;
 .upload_doc label.upload-file-btn{
     margin: 0px;
 }
-.profile_section .timings span{
-    width: 95px;
-}
+
 .profile_section .timings input:nth-of-type(1){
     margin: 0px;
 }
@@ -2459,14 +2537,46 @@ color: #7b7b7b;
     margin: 0px;
 }
 .profile_section .timings input{
-    padding: 10px 0px;
+    padding: 10px 7px;
+    width: auto;
 }
 .cards_favite img{
     width: 100%;
 }
+.chef_header button.navbar-toggler{
+    background-color: inherit;
+}
+.best_chef_section{
+    padding-bottom: 0px;
+}
+nav.navbar.navbar-expand-lg.chef_header.chef_headerfff.chef_header_2 .navbar-nav{
+    float: left;
+}
+.hollie_tittle .holie_links{
+    left: 0px;
+    top: 0px;
 }
 
+}
 
+/* mobile */
+@media only screen and (max-width: 767px){
+    .location_date_section .fields_form{
+        justify-content: space-around;
+    }
+   .chef_header .container-fluid{
+       justify-content:start;
+   }
+   .chef_header button.navbar-toggler{
+       background-color: inherit;
+   }
+   .reviews_section .reviews_star{
+       padding-top: 15px;
+   }
+   .profile_section .timings span{
+    width: 95px;
+}
+}
 
 @media only screen and (max-width: 1024px){
 
@@ -2535,11 +2645,20 @@ color: #7b7b7b;
     .profile_section .timings{
         justify-content: start;
     }
+    .chef_slider .chef_content{
+        padding: 20px 15px;
+    }
+    .chef_slider .card_meals span{
+        margin-bottom: 5px;
+    }
+    nav.navbar.navbar-expand-lg.chef_header.chef_headerfff.chef_header_2 .navbar-nav{
+        float: left;
+    }
 }
 
 @media (min-width: 768px){
 .navbar-nav {
-    float: right !important;
+    /* float: right !important; */
     margin: 0;
 }
 }
@@ -2624,12 +2743,24 @@ button, input, select, textarea {
     line-height: inherit;
     /* margin-top: 10px  !important; */
 }
- 
+.profile_section .edit-profile-form-box .meals_s_l .checkbox-group label,.profile_section .edit-profile-form-box .meals_s_l  label{
+     font-weight: 400;
+ }
 div#upload_more_videos {
     position: relative;
     left: 63%;
 }
-
+.profile_section div#upload_more_videos {
+    left: 0px;
+}
+.profile_section div#upload_more_videos .remove_vdo{
+ display: flex;
+ align-items: center;
+ margin-bottom: 10px;
+}
+.profile_section div#upload_more_videos .remove_vdo input{
+    margin-right: 20px;
+}
 #upload_videos{
     display: flex;
     flex-direction: column;

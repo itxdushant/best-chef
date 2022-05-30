@@ -141,7 +141,7 @@
                                 @if($profile->video_url !=null)
 
                                 <img class="add_more_videos" id="add_more_videos" src="{{asset('images/more.png')}}">
-                                @for($i=0;$i<$total_video_count;$i++) <div class="remove-videodata-{{$i}}" data-id="{{$i}}"><input type="text" class="remove-videodata-{{$i}}" data-id="{{$i}}{count }$" name="videos[]" value="{{$videos_url[$i]}}" placeholder="Video Link">
+                                @for($i=0;$i<$total_video_count;$i++) <div class="remove_div remove-videodata-{{$i}}" data-id="{{$i}}"><input type="text" class=" remove-videodata-{{$i}}" data-id="{{$i}}{count }$" name="videos[]" value="{{$videos_url[$i]}}" placeholder="Video Link">
                                     <img class="remove-video remove-videodata-{{$i}}" data-id="{{$i}}" class="remove-video" src="{{asset('images/minus-32.png')}}">
                             </div>
                             @endfor
@@ -297,7 +297,7 @@
 
                                 <input type="text" name="certificate_data[numbers][]" value="" class="form-control" placeholder="Certification number" />
                                 @endif
-                                <div class="btn btn-primary" id="add_more_certificate">Add More Certificate</div>
+                                <div class="btn_chef" id="add_more_certificate">Add More Certificate</div>
                             </div>
                         </div>
                         <div id="add_more_data">
@@ -319,18 +319,18 @@
 
                             @if ($profile->available_dates !=null)
                             <div class="row">
-                                <div class="col-md-8">
-                                    <div class="available_dates-sec p-md-4" id="dates-form-out">
+                                <div class="col-md-12">
+                                    <div class="available_dates-sec  calender_div" id="dates-form-out">
                                         <form class="" action="#" method="post" id="dates-form">
                                             @csrf
                                             <div class="ava-datepicker1"></div>
                                             <input type="hidden" name="available_dates[]" id="available_dates" value="<?php echo $datesarrayval; ?>">
 
                                             <div class="avail-ble_submit-details submit-Profile-frm next_tab">
-                                                <a href="javascript:void(0)" class="btn btn-success" id="add_dates">SUBMIT</a>
+                                                <a href="javascript:void(0)" class="btn_chef" id="add_dates">SUBMIT</a>
                                                 <!-- <input type="submit" class="btn btn-success" name="EDIT" id="add_dates" value="SUBMIT" /> -->
-                                                <button class="btn btn-success" type="button" id="selectAllDates">Select All</button>
-                                                <button class="btn btn-success" type="button" id="clearAllDates">Clear All</button>
+                                                <button class="btn_chef" type="button" id="selectAllDates">Select All</button>
+                                                <button class="btn_chef" type="button" id="clearAllDates">Clear All</button>
                                             </div>
                                         </form>
                                     </div>
@@ -557,11 +557,11 @@
 
                         @endif
                     </div>
-                    <div class="py-4">
-                        <a href="#" class="btn_c btn_chef"><button type="submit" id="checkBtn">UPDATE PROFILE</button></a>
+                    <div class="py-4 updta_pr_rr">
+                        <a href="#" class=""><button class="btn_c btn_chef" type="submit" id="checkBtn">UPDATE PROFILE</button></a>
                     </div>
                 </div>
-
+                        </div>
                 <div class="col-md-5 col-right">
                     <div class="content_right_div">
                         <div class="content_detail_text">
@@ -689,7 +689,7 @@
 
         $('#add_more_videos').click(function() {
             // console.log('dfdfd');
-            var innerHTML = `<div class="remove-videodata-${count }" data-id="${count }" ><input type="text" class="remove-videodata-${count }" data-id="${count }" name="videos[]"  value="" placeholder="Video Link">
+            var innerHTML = `<div class="remove_vdo remove-videodata-${count }" data-id="${count }" ><input type="text" class="remove-videodata-${count }" data-id="${count }" name="videos[]"  value="" placeholder="Video Link">
              <img class="remove-video remove-videodata-${count }" data-id="${count }" class="remove-video" src="{{asset('images/minus-32.png')}}"></div> `;
             $('#upload_more_videos').append(innerHTML);
             count++;
@@ -703,7 +703,7 @@
         $('#add_more_images').click(function() {
             // console.log('dfdfd');
 
-            var innerHTML = `<label class="upload-file-btn remove-imgdata-${count }"> UPLOAD<input type="file" name="images[]" class="image" size="60"  ></label> <a href="javascript:void(0);" class="remove-img remove-imgdata-${count }" data-id="${count }">
+            var innerHTML = `<label class="upload-file-btn remove_img_z remove-imgdata-${count }"> UPLOAD<input type="file" name="images[]" class="image" size="60"  ></label> <a href="javascript:void(0);" class="remove-img remove-imgdata-${count }" data-id="${count }">
             <img class=".remove-img" src="{{asset('images/minus-32.png')}}"></a><div class="img-preview"></div>`;
 
             $('#upload_images').append(innerHTML);
